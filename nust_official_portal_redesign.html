@@ -1,0 +1,2038 @@
+<!-- ... existing code ... -->
+    <!-- Google Fonts: Plus Jakarta Sans, Fredoka (Cartoon Display) & Playfair Display -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nust: {
+                            navy: '#002147',
+                            deep: '#0B192C',
+                            royal: '#0F4C81',
+                            cyan: '#00A8E8',
+                            gold: '#FFD166',
+                            amber: '#F4A261',
+                            slate: '#F4F8FB',
+                            ink: '#0B192C',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        cartoon: ['"Fredoka"', 'cursive', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* ================= CARTOON & SPRING PHYSICS DESIGN SYSTEM ================= */
+        :root {
+            --ink: #0B192C;
+            --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* Crisp Comic / Cartoon Card & Button Tactile Borders */
+        .cartoon-card {
+            border: 2.5px solid #0B192C;
+            box-shadow: 5px 5px 0px #0B192C;
+            transition: transform 0.32s var(--spring), box-shadow 0.32s var(--spring);
+        }
+        .cartoon-card:hover {
+            transform: translate(-3px, -4px);
+            box-shadow: 8px 9px 0px #0B192C;
+        }
+
+        .cartoon-card-sm {
+            border: 2px solid #0B192C;
+            box-shadow: 3px 3px 0px #0B192C;
+            transition: transform 0.28s var(--spring), box-shadow 0.28s var(--spring);
+        }
+        .cartoon-card-sm:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #0B192C;
+        }
+
+        .cartoon-btn {
+            border: 2.5px solid #0B192C;
+            box-shadow: 4px 4px 0px #0B192C;
+            transition: transform 0.22s var(--spring), box-shadow 0.22s var(--spring), background-color 0.2s ease;
+        }
+        .cartoon-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #0B192C;
+        }
+        .cartoon-btn:active {
+            transform: translate(3px, 3px);
+            box-shadow: 0px 0px 0px #0B192C;
+        }
+
+        /* Hero Playful Sky & Blueprint Grid */
+        .hero-cartoon-bg {
+            background-color: #002147;
+            background-image:
+                radial-gradient(circle at 82% 28%, rgba(0, 168, 232, 0.32) 0%, transparent 45%),
+                radial-gradient(circle at 15% 80%, rgba(255, 209, 102, 0.2) 0%, transparent 45%),
+                linear-gradient(rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1.5px, transparent 1.5px);
+            background-size: 100% 100%, 100% 100%, 34px 34px, 34px 34px;
+        }
+
+        /* Keyframe Cartoon Animations */
+        @keyframes floatBob {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(1.5deg); }
+        }
+        @keyframes floatReverse {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(10px) rotate(-3deg); }
+        }
+        @keyframes waveHand {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-22deg); }
+            50% { transform: rotate(10deg); }
+            75% { transform: rotate(-18deg); }
+        }
+        @keyframes tasselSwing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(14deg); }
+        }
+        @keyframes blinkEyes {
+            0%, 92%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.08); }
+        }
+        @keyframes spinSlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes spinReverseSlow {
+            from { transform: rotate(360deg); }
+            to { transform: rotate(0deg); }
+        }
+        @keyframes rocketHover {
+            0%, 100% { transform: translate(0, 0) rotate(-3deg); }
+            50% { transform: translate(4px, -10px) rotate(2deg); }
+        }
+        @keyframes flameFlicker {
+            0%, 100% { transform: scaleY(1) scaleX(1); opacity: 1; }
+            50% { transform: scaleY(1.28) scaleX(0.85); opacity: 0.85; }
+        }
+        @keyframes bubbleRise {
+            0% { transform: translateY(0) scale(0.8); opacity: 0; }
+            40% { opacity: 1; }
+            100% { transform: translateY(-28px) scale(1.2); opacity: 0; }
+        }
+        @keyframes marqueeScroll {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+        @keyframes squashPop {
+            0% { transform: scale(0.85, 1.15); }
+            45% { transform: scale(1.12, 0.88); }
+            75% { transform: scale(0.96, 1.04); }
+            100% { transform: scale(1, 1); }
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .anim-float { animation: floatBob 4.2s ease-in-out infinite; }
+        .anim-float-rev { animation: floatReverse 5s ease-in-out infinite; }
+        .anim-wave { transform-origin: 185px 175px; animation: waveHand 2.4s ease-in-out infinite; }
+        .anim-tassel { transform-origin: 196px 64px; animation: tasselSwing 3s ease-in-out infinite; }
+        .anim-blink { transform-origin: center 116px; animation: blinkEyes 4.5s infinite; }
+        .anim-spin { transform-origin: center; animation: spinSlow 14s linear infinite; }
+        .anim-spin-rev { transform-origin: center; animation: spinReverseSlow 10s linear infinite; }
+        .anim-rocket { animation: rocketHover 2.8s ease-in-out infinite; }
+        .anim-flame { transform-origin: top center; animation: flameFlicker 0.35s ease-in-out infinite; }
+        .anim-squash { animation: squashPop 0.55s var(--spring); }
+        .hover-wiggle:hover { animation: wiggle 0.45s ease-in-out; }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marqueeScroll 28s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* Scroll Reveal Pop-In */
+        .reveal-pop {
+            opacity: 0;
+            transform: translateY(28px) scale(0.95);
+            transition: opacity 0.6s ease, transform 0.65s var(--spring);
+        }
+        .reveal-pop.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .mega-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px) scale(0.97);
+            transition: all 0.28s var(--spring);
+        }
+        .group:hover .mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Custom Cartoon Range Slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 24px;
+            width: 24px;
+            border-radius: 50%;
+            background: #FFD166;
+            border: 3px solid #0B192C;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 2px 2px 0px #0B192C;
+            transition: transform 0.2s var(--spring);
+        }
+        input[type=range]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: rgba(255,255,255,0.25);
+            border: 1.5px solid #0B192C;
+            border-radius: 999px;
+        }
+
+        /* Confetti Overlay Canvas */
+        #confetti-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased selection:bg-nust-gold selection:text-nust-deep overflow-x-hidden">
+
+    <!-- Confetti Particle Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- ==================== 1. TOP UTILITY BAR ==================== -->
+    <div class="bg-nust-deep text-slate-200 text-xs border-b-2 border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-nust-gold text-nust-deep font-cartoon font-bold text-[11px] border border-nust-ink shadow-[2px_2px_0px_#000]">
+                    <span class="w-2 h-2 rounded-full bg-emerald-600 animate-ping mr-1.5"></span>
+                    NET-2027 LIVE!
+                </span>
+                <span class="hidden lg:inline text-slate-300 font-medium">Sector H-12, Islamabad, Pakistan</span>
+            </div>
+            <div class="flex items-center space-x-4 sm:space-x-5 font-semibold overflow-x-auto whitespace-nowrap">
+                <button onclick="showToast('Launching Qalam LMS Portal (qalam.nust.edu.pk)...', '🎓')" class="hover:text-nust-gold transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-graduation-cap text-nust-gold"></i> LMS (Qalam)
+                </button>
+                <button onclick="showToast('Opening NUST Webmail Portal...', '✉️')" class="hover:text-nust-gold transition">Webmail</button>
+                <a href="#research" class="hover:text-nust-gold transition font-bold text-nust-cyan">NSTP</a>
+                <button onclick="showToast('Alumni Network Portal opened!', '🦉')" class="hover:text-nust-gold transition">Alumni</button>
+                <button onclick="showToast('NUST Careers & Faculty Portal opened!', '🚀')" class="hover:text-nust-gold transition">Careers</button>
+                <a href="#footer" class="hover:text-nust-gold transition">Contact</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==================== 2. STICKY MEGA NAVIGATION BAR ==================== -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-[2.5px] border-nust-ink shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- Brand Logo & Cartoon Crest -->
+                <a href="#" class="flex items-center space-x-3.5 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-nust-navy to-nust-cyan p-1.5 flex items-center justify-center cartoon-card-sm group-hover:rotate-6 transition-transform">
+                        <svg viewBox="0 0 64 64" class="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M32 4L8 14V30C8 45.5 18.2 58.6 32 62C45.8 58.6 56 45.5 56 30V14L32 4Z" fill="#002147" stroke="#FFD166" stroke-width="3.5"/>
+                            <circle cx="32" cy="28" r="11" stroke="#00A8E8" stroke-width="3"/>
+                            <path d="M25 32L32 19L39 32H25Z" fill="#FFD166"/>
+                            <path d="M20 44H44" stroke="white" stroke-width="3" stroke-linecap="round"/>
+                            <text x="32" y="54" text-anchor="middle" fill="#FFD166" font-size="8.5" font-weight="900" font-family="sans-serif">NUST</text>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-cartoon font-bold text-2xl tracking-tight text-nust-navy">NUST</span>
+                            <span class="hidden sm:inline-block text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-nust-gold text-nust-deep border-[1.5px] border-nust-ink">Est. 1991</span>
+                        </div>
+                        <p class="text-[11px] sm:text-xs text-slate-600 font-semibold leading-tight">National University of Sciences & Technology</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Links + Cartoon Mega Menus -->
+                <nav class="hidden lg:flex items-center space-x-1">
+                    <!-- About Mega Menu -->
+                    <div class="relative group">
+                        <button class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-nust-navy hover:bg-nust-gold/25 flex items-center gap-1.5 transition">
+                            About <i class="fa-solid fa-chevron-down text-[10px] text-nust-navy group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="mega-menu absolute left-0 top-full pt-2.5 w-[550px]">
+                            <div class="bg-white rounded-2xl cartoon-card p-6 grid grid-cols-2 gap-6">
+                                <div>
+                                    <span class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-cyan">University Profile</span>
+                                    <ul class="mt-3 space-y-2.5 text-sm">
+                                        <li><a href="#programs" class="flex items-center gap-2 text-slate-800 hover:text-nust-navy font-semibold"><i class="fa-solid fa-landmark text-nust-cyan w-4"></i> Rector's Message & Vision</a></li>
+                                        <li><a href="#programs" class="flex items-center gap-2 text-slate-800 hover:text-nust-navy font-semibold"><i class="fa-solid fa-ranking-star text-nust-amber w-4"></i> QS Global Rankings</a></li>
+                                        <li><a href="#campuses" class="flex items-center gap-2 text-slate-800 hover:text-nust-navy font-semibold"><i class="fa-solid fa-map-location-dot text-emerald-600 w-4"></i> 5 Constituent Campuses</a></li>
+                                        <li><a href="#news" class="flex items-center gap-2 text-slate-800 hover:text-nust-navy font-semibold"><i class="fa-solid fa-shield-halved text-nust-navy w-4"></i> Quality Assurance (QAD)</a></li>
+                                    </ul>
+                                </div>
+                                <div class="bg-nust-gold/30 rounded-xl p-4 border-2 border-nust-ink flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-xs font-cartoon font-bold text-nust-navy">🏆 QS World Top 360</span>
+                                        <p class="text-xs text-slate-700 font-medium mt-1 leading-relaxed">Ranked #1 in Pakistan for Engineering & Technology and #127 globally!</p>
+                                    </div>
+                                    <a href="#campuses" class="mt-4 text-xs font-extrabold text-nust-navy hover:underline inline-flex items-center gap-1">
+                                        Explore H-12 Campus <i class="fa-solid fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admissions Mega Menu -->
+                    <div class="relative group">
+                        <button class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-nust-navy hover:bg-nust-gold/25 flex items-center gap-1.5 transition">
+                            Admissions <i class="fa-solid fa-chevron-down text-[10px] text-nust-navy group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="mega-menu absolute left-0 top-full pt-2.5 w-[590px]">
+                            <div class="bg-white rounded-2xl cartoon-card p-6 grid grid-cols-2 gap-6">
+                                <div>
+                                    <span class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-cyan">Admission Streams</span>
+                                    <ul class="mt-3 space-y-2.5 text-sm">
+                                        <li><a href="#admissions" class="block text-slate-800 hover:text-nust-navy font-bold">Undergraduate (NET / SAT)</a><span class="text-xs text-slate-500">BS Engineering, AI, CS, Business & Sciences</span></li>
+                                        <li><a href="#admissions" class="block text-slate-800 hover:text-nust-navy font-bold">Postgraduate (MS / PhD)</a><span class="text-xs text-slate-500">GNET, GAT-General & Subject Tracks</span></li>
+                                        <li><a href="#admissions" class="block text-slate-800 hover:text-nust-navy font-bold">International Students</a><span class="text-xs text-slate-500">Dedicated seats & global scholarships</span></li>
+                                    </ul>
+                                </div>
+                                <div class="bg-nust-navy text-white rounded-xl p-4 border-2 border-nust-ink flex flex-col justify-between">
+                                    <div>
+                                        <span class="text-[11px] font-cartoon font-bold uppercase tracking-wider text-nust-gold">🧮 Interactive Tool</span>
+                                        <h4 class="font-cartoon font-bold text-base mt-1">NET Merit Calculator</h4>
+                                        <p class="text-xs text-slate-200 mt-1">Calculate your aggregate & watch NUSTy celebrate your merit score!</p>
+                                    </div>
+                                    <a href="#admissions" class="mt-4 inline-flex items-center justify-center w-full py-2 rounded-xl bg-nust-gold text-nust-deep font-extrabold text-xs border-2 border-nust-ink hover:bg-amber-300 transition">
+                                        Launch Calculator
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Academics Mega Menu -->
+                    <div class="relative group">
+                        <button class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-nust-navy hover:bg-nust-gold/25 flex items-center gap-1.5 transition">
+                            Academics <i class="fa-solid fa-chevron-down text-[10px] text-nust-navy group-hover:rotate-180 transition-transform"></i>
+                        </button>
+                        <div class="mega-menu absolute -left-24 top-full pt-2.5 w-[660px]">
+                            <div class="bg-white rounded-2xl cartoon-card p-6">
+                                <div class="flex items-center justify-between pb-3 mb-4 border-b-2 border-slate-100">
+                                    <span class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-cyan">Constituent Schools & Colleges</span>
+                                    <a href="#programs" class="text-xs font-extrabold text-nust-navy hover:underline">View All 120+ Degree Programs →</a>
+                                </div>
+                                <div class="grid grid-cols-3 gap-3 text-xs">
+                                    <a href="#programs" onclick="filterProgramsBySchool('SEECS')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-sky-50 transition">
+                                        <p class="font-extrabold text-nust-navy">💻 SEECS</p>
+                                        <p class="text-slate-600 mt-0.5">Electrical Engg. & Computer Science</p>
+                                    </a>
+                                    <a href="#programs" onclick="filterProgramsBySchool('SMME')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-amber-50 transition">
+                                        <p class="font-extrabold text-nust-navy">⚙️ SMME</p>
+                                        <p class="text-slate-600 mt-0.5">Mechanical & Robotics Engg.</p>
+                                    </a>
+                                    <a href="#programs" onclick="filterProgramsBySchool('NBS')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-emerald-50 transition">
+                                        <p class="font-extrabold text-nust-navy">📈 NBS</p>
+                                        <p class="text-slate-600 mt-0.5">NUST Business School</p>
+                                    </a>
+                                    <a href="#programs" onclick="filterProgramsBySchool('S3H')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-purple-50 transition">
+                                        <p class="font-extrabold text-nust-navy">🌍 S3H</p>
+                                        <p class="text-slate-600 mt-0.5">Social Sciences & Humanities</p>
+                                    </a>
+                                    <a href="#programs" onclick="filterProgramsBySchool('SADA')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-rose-50 transition">
+                                        <p class="font-extrabold text-nust-navy">🏛️ SADA</p>
+                                        <p class="text-slate-600 mt-0.5">Art, Design & Architecture</p>
+                                    </a>
+                                    <a href="#programs" onclick="filterProgramsBySchool('ASAB')" class="p-3 rounded-xl border-2 border-transparent hover:border-nust-ink hover:bg-teal-50 transition">
+                                        <p class="font-extrabold text-nust-navy">🧬 ASAB & NICE</p>
+                                        <p class="text-slate-600 mt-0.5">Biosciences & Civil Engg.</p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#research" class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-nust-navy hover:bg-nust-gold/25 transition">Research & NSTP</a>
+                    <a href="#campuses" class="px-3.5 py-2.5 rounded-xl text-sm font-bold text-slate-800 hover:text-nust-navy hover:bg-nust-gold/25 transition">Campus Life</a>
+                </nav>
+
+                <!-- Right Actions: Search & Apply CTA -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="openSearchModal()" aria-label="Search NUST" class="p-2.5 rounded-xl bg-nust-slate text-nust-navy cartoon-btn">
+                        <i class="fa-solid fa-magnifying-glass text-base"></i>
+                    </button>
+                    <button onclick="openApplyModal()" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-nust-gold hover:bg-amber-300 text-nust-deep font-cartoon font-bold text-sm cartoon-btn">
+                        <span>Apply Now (NET)</span>
+                        <i class="fa-solid fa-rocket text-xs"></i>
+                    </button>
+                    <button onclick="toggleMobileMenu()" aria-label="Toggle Menu" class="lg:hidden p-2.5 rounded-xl bg-nust-slate text-nust-navy cartoon-btn">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t-2 border-nust-ink px-4 pt-3 pb-6 space-y-2 shadow-xl">
+            <a href="#programs" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-bold text-slate-800 hover:bg-nust-gold/25">📚 Academics & Programs</a>
+            <a href="#admissions" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-bold text-slate-800 hover:bg-nust-gold/25">🧮 Admissions & NET Calculator</a>
+            <a href="#research" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-bold text-slate-800 hover:bg-nust-gold/25">🚀 Research & NSTP</a>
+            <a href="#campuses" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-bold text-slate-800 hover:bg-nust-gold/25">🏛️ Campuses & Virtual Tour</a>
+            <a href="#news" onclick="toggleMobileMenu()" class="block px-3 py-2.5 rounded-xl font-bold text-slate-800 hover:bg-nust-gold/25">📰 News & Events</a>
+            <div class="pt-2">
+                <button onclick="toggleMobileMenu(); openApplyModal();" class="w-full py-3 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-sm cartoon-btn">
+                    Apply Now — NET Admissions 🚀
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==================== 3. HERO SECTION WITH ANIMATED CARTOON MASCOT STAGE ==================== -->
+    <section id="hero-section" class="hero-cartoon-bg relative text-white pt-12 pb-32 lg:pt-16 lg:pb-40 overflow-hidden">
+        
+        <!-- Parallax Floating Cartoon Doodles Background -->
+        <div id="parallax-doodles" class="pointer-events-none absolute inset-0 overflow-hidden">
+            <!-- Floating Cloud Left -->
+            <svg class="parallax-item absolute top-14 left-[4%] w-24 h-14 opacity-20 anim-float" data-speed="0.03" viewBox="0 0 120 70" fill="none">
+                <path d="M25 55H95C106 55 114 47 114 37C114 28 107 20 98 19C94 9 84 3 72 3C58 3 47 12 44 24C41 23 38 22 35 22C22 22 12 32 12 44C12 50 18 55 25 55Z" fill="#00A8E8" stroke="#FFFFFF" stroke-width="3"/>
+            </svg>
+            <!-- Floating Paper Airplane -->
+            <svg class="parallax-item absolute top-24 right-[44%] w-14 h-14 opacity-70 anim-float-rev" data-speed="-0.04" viewBox="0 0 64 64" fill="none">
+                <path d="M6 30L58 10L42 54L28 38L6 30Z" fill="#FFD166" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
+                <path d="M58 10L28 38" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <!-- Floating Sparkle Star -->
+            <svg class="parallax-item absolute bottom-44 left-[8%] w-10 h-10 anim-spin" data-speed="0.02" viewBox="0 0 40 40" fill="none">
+                <path d="M20 2L24 16L38 20L24 24L20 38L16 24L2 20L16 16L20 2Z" fill="#FFD166" stroke="#0B192C" stroke-width="2.5"/>
+            </svg>
+            <!-- Floating Math Formula Badge -->
+            <div class="parallax-item hidden xl:flex items-center px-3 py-1 rounded-full bg-white/10 border border-white/25 text-xs font-cartoon text-nust-gold absolute top-12 left-[42%] anim-float" data-speed="0.025">
+                E = mc² + ☕
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-nust-cyan/20 border-2 border-nust-cyan text-xs sm:text-sm font-cartoon font-bold text-nust-gold shadow-[3px_3px_0px_#0B192C]">
+                        <span>🏆 #1 Engineering & Tech University in Pakistan</span>
+                    </div>
+                    
+                    <h1 class="font-cartoon text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.1] tracking-tight">
+                        Defining Futures Through <span class="text-nust-gold underline decoration-nust-cyan decoration-4 underline-offset-8">Playful Innovation</span> & Excellence!
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-slate-200 max-w-xl leading-relaxed font-medium">
+                        Welcome to Pakistan’s premier multidisciplinary research campus in Sector H-12, Islamabad. Click <strong class="text-nust-gold">NUSTy the Owl</strong> on the right for campus secrets & NET tips!
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button onclick="openApplyModal()" class="px-7 py-3.5 rounded-2xl bg-nust-gold hover:bg-amber-300 text-nust-deep font-cartoon font-bold text-base cartoon-btn flex items-center gap-2.5">
+                            <span>Start Fall Admission</span>
+                            <i class="fa-solid fa-rocket"></i>
+                        </button>
+                        <a href="#campuses" class="px-6 py-3.5 rounded-2xl bg-nust-cyan hover:bg-sky-400 text-nust-deep font-cartoon font-bold text-base cartoon-btn flex items-center gap-2">
+                            <i class="fa-solid fa-vr-cardboard"></i>
+                            <span>Explore H-12 Campus</span>
+                        </a>
+                    </div>
+
+                    <!-- Mini Cartoon QS Stat Pills -->
+                    <div class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 border-2 border-white/25 text-center">
+                            <p class="font-cartoon text-xl sm:text-2xl font-bold text-nust-gold">Top 360</p>
+                            <p class="text-[11px] text-slate-200 font-semibold">QS World Rank</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 border-2 border-white/25 text-center">
+                            <p class="font-cartoon text-xl sm:text-2xl font-bold text-nust-cyan">#127</p>
+                            <p class="text-[11px] text-slate-200 font-semibold">Engg & Tech Global</p>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-3 border-2 border-white/25 text-center">
+                            <p class="font-cartoon text-xl sm:text-2xl font-bold text-white">120+</p>
+                            <p class="text-[11px] text-slate-200 font-semibold">Degree Programs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right: INTERACTIVE ANIMATED CARTOON MASCOT STAGE ("NUSTy") -->
+                <div class="lg:col-span-6 flex flex-col items-center justify-center relative">
+                    
+                    <!-- Interactive Speech Bubble -->
+                    <div onclick="cycleMascotQuote()" class="cursor-pointer mb-2 max-w-sm bg-white text-nust-deep rounded-2xl px-5 py-3.5 cartoon-card relative select-none group">
+                        <div class="flex items-center justify-between gap-2 mb-1">
+                            <span class="text-[11px] font-cartoon font-bold uppercase tracking-wider text-nust-cyan flex items-center gap-1">
+                                <i class="fa-solid fa-comment-dots"></i> NUSTy Says (Click Me!)
+                            </span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-nust-gold/40 text-nust-navy group-hover:scale-110 transition">Next Tip ↻</span>
+                        </div>
+                        <p id="mascot-speech-text" class="font-cartoon font-semibold text-sm sm:text-base text-nust-navy leading-snug">
+                            "Salam future NUSTian! Ready to ace NET-2027 and grab chai at C1?" ☕🦉
+                        </p>
+                        <!-- Speech Bubble Tail -->
+                        <div class="w-4 h-4 bg-white border-r-[2.5px] border-b-[2.5px] border-nust-ink rotate-45 absolute -bottom-2.5 left-1/2 -translate-x-1/2"></div>
+                    </div>
+
+                    <!-- Custom Animated SVG Cartoon Mascot ("NUSTy" the Tech Owl) -->
+                    <div id="mascot-container" onclick="cycleMascotQuote()" class="cursor-pointer relative w-[310px] sm:w-[360px] h-[310px] sm:h-[340px] flex items-center justify-center select-none" title="Click NUSTy for fun NUST facts!">
+                        
+                        <!-- Orbiting Cartoon Atom Ring -->
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none anim-spin" viewBox="0 0 360 360" fill="none">
+                            <ellipse cx="180" cy="180" rx="158" ry="64" transform="rotate(-24 180 180)" stroke="#00A8E8" stroke-width="2.5" stroke-dasharray="10 8" opacity="0.65"/>
+                            <circle cx="38" cy="242" r="9" fill="#FFD166" stroke="#0B192C" stroke-width="2.5"/>
+                            <circle cx="322" cy="118" r="8" fill="#00A8E8" stroke="#0B192C" stroke-width="2.5"/>
+                        </svg>
+
+                        <!-- Floating Mini Gear Left -->
+                        <svg class="absolute left-2 top-16 w-12 h-12 anim-spin-rev pointer-events-none" viewBox="0 0 64 64" fill="none">
+                            <circle cx="32" cy="32" r="14" fill="#F4A261" stroke="#0B192C" stroke-width="3"/>
+                            <circle cx="32" cy="32" r="6" fill="#002147" stroke="#0B192C" stroke-width="2.5"/>
+                            <path d="M32 8V14M32 50V56M8 32H14M50 32H56M15 15L19 19M45 45L49 49M49 15L45 19M19 45L15 49" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>
+                        </svg>
+
+                        <!-- Floating Graduation Cap Right -->
+                        <svg class="absolute right-3 bottom-14 w-14 h-14 anim-float-rev pointer-events-none" viewBox="0 0 64 64" fill="none">
+                            <path d="M32 14L6 26L32 38L58 26L32 14Z" fill="#00A8E8" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
+                            <path d="M16 32V44C16 48 23 52 32 52C41 52 48 48 48 44V32" fill="#002147" stroke="#0B192C" stroke-width="3"/>
+                            <path d="M54 28V42" stroke="#FFD166" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+
+                        <!-- Main NUSTy Character SVG -->
+                        <svg viewBox="0 0 320 320" class="w-full h-full anim-float drop-shadow-[0_12px_18px_rgba(0,0,0,0.35)]" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Ground Shadow -->
+                            <ellipse cx="160" cy="296" rx="78" ry="12" fill="#0B192C" opacity="0.45"/>
+
+                            <!-- Waving Left Wing / Arm -->
+                            <g class="anim-wave">
+                                <path d="M214 176C238 158 264 134 256 116C248 100 226 116 206 144" fill="#00A8E8" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
+                                <!-- Cartoon White Glove Hand -->
+                                <circle cx="255" cy="114" r="13" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                                <path d="M250 108L246 98M256 106L256 95M262 108L266 99" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
+                            </g>
+
+                            <!-- Owl Body / NUST Royal Navy Hoodie -->
+                            <path d="M96 172C96 144 122 132 160 132C198 132 224 144 224 172L232 252C232 268 214 276 160 276C106 276 88 268 88 252L96 172Z" fill="#003366" stroke="#0B192C" stroke-width="4.5"/>
+                            
+                            <!-- Hoodie Center Gold Stripe & Pocket -->
+                            <path d="M126 176H194L202 250H118L126 176Z" fill="#00A8E8" stroke="#0B192C" stroke-width="3.5"/>
+                            <text x="160" y="205" text-anchor="middle" fill="#FFD166" font-family="Fredoka, sans-serif" font-weight="800" font-size="18" stroke="#0B192C" stroke-width="1">NUST</text>
+
+                            <!-- Hoodie Drawstrings -->
+                            <path d="M146 154V178" stroke="#FFD166" stroke-width="3.5" stroke-linecap="round"/>
+                            <path d="M174 154V178" stroke="#FFD166" stroke-width="3.5" stroke-linecap="round"/>
+
+                            <!-- Right Wing Holding Glowing Laptop -->
+                            <path d="M104 176C78 186 72 214 96 226" fill="#00A8E8" stroke="#0B192C" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Cartoon Laptop -->
+                            <g transform="translate(86, 212) rotate(-6)">
+                                <rect x="0" y="0" width="84" height="50" rx="8" fill="#F8FAFC" stroke="#0B192C" stroke-width="3.5"/>
+                                <circle cx="42" cy="25" r="10" fill="#FFD166" stroke="#0B192C" stroke-width="2.5"/>
+                                <path d="M38 25L41 28L47 21" stroke="#0B192C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="-8" y="48" width="100" height="8" rx="4" fill="#94A3B8" stroke="#0B192C" stroke-width="3"/>
+                            </g>
+
+                            <!-- Owl Feet -->
+                            <path d="M126 274L118 288M134 274L134 290M142 274L148 288" stroke="#F4A261" stroke-width="5" stroke-linecap="round"/>
+                            <path d="M178 274L172 288M186 274L186 290M194 274L202 288" stroke="#F4A261" stroke-width="5" stroke-linecap="round"/>
+
+                            <!-- Owl Head -->
+                            <ellipse cx="160" cy="112" rx="64" ry="52" fill="#1E40AF" stroke="#0B192C" stroke-width="4.5"/>
+                            <!-- Owl Ear Tufts -->
+                            <path d="M102 82L92 58L120 72" fill="#1E40AF" stroke="#0B192C" stroke-width="4" stroke-linejoin="round"/>
+                            <path d="M218 82L228 58L200 72" fill="#1E40AF" stroke="#0B192C" stroke-width="4" stroke-linejoin="round"/>
+
+                            <!-- Face Mask Cream Patch -->
+                            <path d="M110 112C110 92 132 84 160 96C188 84 210 92 210 112C210 136 188 150 160 150C132 150 110 136 110 112Z" fill="#FFFBEB" stroke="#0B192C" stroke-width="3.5"/>
+
+                            <!-- Expressive Cartoon Eyes + Glasses -->
+                            <g class="anim-blink">
+                                <!-- Left Eye -->
+                                <circle cx="136" cy="114" r="17" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                                <circle cx="139" cy="114" r="8.5" fill="#0B192C"/>
+                                <circle cx="142" cy="110" r="3" fill="#FFFFFF"/>
+                                <!-- Right Eye -->
+                                <circle cx="184" cy="114" r="17" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                                <circle cx="181" cy="114" r="8.5" fill="#0B192C"/>
+                                <circle cx="184" cy="110" r="3" fill="#FFFFFF"/>
+                            </g>
+
+                            <!-- Smart Geek Glasses Frame -->
+                            <circle cx="136" cy="114" r="21" stroke="#FFD166" stroke-width="4"/>
+                            <circle cx="184" cy="114" r="21" stroke="#FFD166" stroke-width="4"/>
+                            <path d="M157 114H163" stroke="#FFD166" stroke-width="4" stroke-linecap="round"/>
+
+                            <!-- Cute Orange Beak & Rosy Cheeks -->
+                            <ellipse cx="115" cy="128" rx="7" ry="4" fill="#FDA4AF" opacity="0.8"/>
+                            <ellipse cx="205" cy="128" rx="7" ry="4" fill="#FDA4AF" opacity="0.8"/>
+                            <path d="M151 124H169L160 138L151 124Z" fill="#F4A261" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
+
+                            <!-- Graduation Mortarboard Cap -->
+                            <g transform="translate(0, -4)">
+                                <path d="M160 34L104 56L160 76L216 56L160 34Z" fill="#0B192C" stroke="#FFD166" stroke-width="3" stroke-linejoin="round"/>
+                                <path d="M128 65V78C128 83 142 87 160 87C178 87 192 83 192 78V65" fill="#002147" stroke="#0B192C" stroke-width="3"/>
+                                <!-- Swinging Gold Tassel -->
+                                <g class="anim-tassel">
+                                    <path d="M160 55L196 64L198 92" stroke="#FFD166" stroke-width="3.5" stroke-linecap="round"/>
+                                    <circle cx="198" cy="94" r="4.5" fill="#F4A261" stroke="#0B192C" stroke-width="2"/>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Quick-Action 'Find Your Program' Bar at Bottom Edge -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 -mb-44 lg:-mb-48 mt-8">
+            <div class="bg-white rounded-3xl cartoon-card p-5 sm:p-7">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+                    <h2 class="font-cartoon font-bold text-nust-navy text-lg sm:text-xl flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-xl bg-nust-gold border-2 border-nust-ink flex items-center justify-center text-sm">🧭</span>
+                        <span>Find Your Dream Degree Program</span>
+                    </h2>
+                    <span class="text-xs font-bold text-nust-cyan bg-sky-50 px-3 py-1 rounded-full border border-sky-200">120+ HEC & PEC Accredited Programs</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-3.5">
+                    <div class="md:col-span-4 relative">
+                        <i class="fa-solid fa-search absolute left-3.5 top-1/2 -translate-y-1/2 text-nust-navy text-sm"></i>
+                        <input id="hero-search-input" type="text" placeholder="e.g. Computer Science, AI, BBA..." class="w-full pl-10 pr-4 py-3 rounded-xl bg-nust-slate border-2 border-nust-ink text-sm font-semibold text-slate-800 focus:outline-none focus:bg-amber-50/40 transition">
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <select id="hero-level-select" class="w-full px-3.5 py-3 rounded-xl bg-nust-slate border-2 border-nust-ink text-sm font-semibold text-slate-800 focus:outline-none focus:bg-amber-50/40 transition">
+                            <option value="All">All Degree Levels</option>
+                            <option value="Undergraduate">Undergraduate (BS / BE)</option>
+                            <option value="Masters">Postgraduate (MS / MBA)</option>
+                            <option value="PhD">Doctoral (PhD)</option>
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-3">
+                        <select id="hero-discipline-select" class="w-full px-3.5 py-3 rounded-xl bg-nust-slate border-2 border-nust-ink text-sm font-semibold text-slate-800 focus:outline-none focus:bg-amber-50/40 transition">
+                            <option value="All">All Disciplines</option>
+                            <option value="Computing">Computing & AI</option>
+                            <option value="Engineering">Engineering & Tech</option>
+                            <option value="Business">Business & Management</option>
+                            <option value="Social Sciences">Social Sciences</option>
+                            <option value="Architecture">Architecture & Design</option>
+                            <option value="Natural Sciences">Biosciences</option>
+                        </select>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <button onclick="executeHeroSearch()" class="w-full h-full py-3 px-4 rounded-xl bg-nust-navy hover:bg-nust-royal text-white font-cartoon font-bold text-sm cartoon-btn flex items-center justify-center gap-2">
+                            <span>Explore</span>
+                            <i class="fa-solid fa-arrow-right text-xs text-nust-gold"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PLAYFUL ANIMATED TICKER MARQUEE ==================== -->
+    <div class="bg-nust-gold border-y-[2.5px] border-nust-ink py-2.5 overflow-hidden relative z-10 mt-20 lg:mt-24">
+        <div class="marquee-track flex items-center space-x-8 text-nust-deep font-cartoon font-bold text-xs sm:text-sm">
+            <span>⭐ NET-2027 SERIES-1 REGISTRATIONS ARE OPEN!</span>
+            <span>🚀 NSTP HOUSES 110+ HIGH-TECH STARTUPS AT H-12 ISLAMABAD</span>
+            <span>🏆 RANKED #1 IN PAKISTAN FOR ENGINEERING & TECHNOLOGY (QS RANKINGS)</span>
+            <span>🎓 NEED-BASED SCHOLARSHIPS & HONHAAR FINANCIAL AID AVAILABLE</span>
+            <span>🤖 NUST AI & ROBOTICS OLYMPIAD 2026 — REGISTER YOUR TEAM</span>
+            <span>⭐ NET-2027 SERIES-1 REGISTRATIONS ARE OPEN!</span>
+            <span>🚀 NSTP HOUSES 110+ HIGH-TECH STARTUPS AT H-12 ISLAMABAD</span>
+            <span>🏆 RANKED #1 IN PAKISTAN FOR ENGINEERING & TECHNOLOGY (QS RANKINGS)</span>
+            <span>🎓 NEED-BASED SCHOLARSHIPS & HONHAAR FINANCIAL AID AVAILABLE</span>
+            <span>🤖 NUST AI & ROBOTICS OLYMPIAD 2026 — REGISTER YOUR TEAM</span>
+        </div>
+    </div>
+
+    <!-- ==================== 4. INTERACTIVE PROGRAM EXPLORER ==================== -->
+    <section id="programs" class="pt-16 pb-20 bg-nust-slate border-b-[2.5px] border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-pop flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="inline-block px-3 py-1 rounded-full bg-nust-cyan/20 border-2 border-nust-ink text-xs font-cartoon font-bold text-nust-navy">📚 Academic Explorer</span>
+                    <h2 class="font-cartoon text-3xl sm:text-4xl font-bold text-nust-navy mt-2">Choose Your Superpower Degree</h2>
+                    <p class="text-slate-600 mt-2 max-w-2xl text-sm sm:text-base font-medium">
+                        Filter by school or degree level, then click any cartoon program card to inspect courses, entry tests, and semester fees.
+                    </p>
+                </div>
+                
+                <!-- Degree Level Pill Switcher -->
+                <div class="inline-flex p-1.5 rounded-2xl bg-white cartoon-card-sm self-start">
+                    <button onclick="setProgramLevel('All')" data-level="All" class="level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white transition">All</button>
+                    <button onclick="setProgramLevel('Undergraduate')" data-level="Undergraduate" class="level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold text-slate-700 hover:text-nust-navy transition">Undergraduate</button>
+                    <button onclick="setProgramLevel('Masters')" data-level="Masters" class="level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold text-slate-700 hover:text-nust-navy transition">Masters</button>
+                    <button onclick="setProgramLevel('PhD')" data-level="PhD" class="level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold text-slate-700 hover:text-nust-navy transition">PhD</button>
+                </div>
+            </div>
+
+            <!-- School Filter Chips -->
+            <div class="reveal-pop flex items-center gap-2.5 overflow-x-auto pb-4 mb-6">
+                <button onclick="setProgramSchool('All')" data-school="All" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-nust-gold text-nust-deep border-2 border-nust-ink shadow-[2px_2px_0px_#0B192C] transition">🌟 All Schools</button>
+                <button onclick="setProgramSchool('SEECS')" data-school="SEECS" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-sky-50 transition">💻 SEECS (Computing)</button>
+                <button onclick="setProgramSchool('SMME')" data-school="SMME" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">⚙️ SMME (Mechanical)</button>
+                <button onclick="setProgramSchool('NBS')" data-school="NBS" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-emerald-50 transition">📈 NBS (Business)</button>
+                <button onclick="setProgramSchool('S3H')" data-school="S3H" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-purple-50 transition">🌍 S3H (Social Sciences)</button>
+                <button onclick="setProgramSchool('SADA')" data-school="SADA" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-rose-50 transition">🏛️ SADA (Architecture)</button>
+                <button onclick="setProgramSchool('ASAB')" data-school="ASAB" class="school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-teal-50 transition">🧬 ASAB (Biosciences)</button>
+            </div>
+
+            <div class="flex items-center justify-between mb-6 text-xs font-bold text-slate-600">
+                <p id="program-count-label">Showing <span class="text-nust-navy">9</span> featured programs</p>
+                <button onclick="resetProgramFilters()" class="text-nust-navy hover:underline flex items-center gap-1">
+                    <i class="fa-solid fa-rotate-left"></i> Reset Filters
+                </button>
+            </div>
+
+            <!-- Program Cards Grid -->
+            <div id="programs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 5. ADMISSIONS & NET MERIT CALCULATOR HUB ==================== -->
+    <section id="admissions" class="py-20 bg-white border-b-[2.5px] border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-pop text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-nust-gold border-2 border-nust-ink text-xs font-cartoon font-bold text-nust-deep">🎯 Admissions & Merit Lab</span>
+                <h2 class="font-cartoon text-3xl sm:text-4xl font-bold text-nust-navy mt-2">NET Roadmap & Merit Aggregate Calculator</h2>
+                <p class="text-slate-600 mt-3 text-sm sm:text-base font-medium">
+                    Slide your marks below to compute your live NUST aggregate—and watch our mini NUSTy cheer when you hit top merit!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Left 7 Cols: Admission Streams Tabs -->
+                <div class="reveal-pop lg:col-span-7 bg-nust-slate rounded-3xl cartoon-card p-6 sm:p-8">
+                    <div class="flex flex-wrap gap-2.5 border-b-2 border-slate-200 pb-4 mb-6">
+                        <button onclick="switchAdmissionTab('ug')" id="tab-ug" class="adm-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white border-2 border-nust-ink transition">
+                            🎓 Undergraduate (NET)
+                        </button>
+                        <button onclick="switchAdmissionTab('pg')" id="tab-pg" class="adm-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">
+                            🔬 Postgraduate (MS/PhD)
+                        </button>
+                        <button onclick="switchAdmissionTab('intl')" id="tab-intl" class="adm-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">
+                            ✈️ International Track
+                        </button>
+                    </div>
+
+                    <div id="admission-tab-content">
+                        <!-- Dynamically rendered -->
+                    </div>
+                </div>
+
+                <!-- Right 5 Cols: Interactive NET Merit Aggregate Calculator with Cartoon Reaction -->
+                <div class="reveal-pop lg:col-span-5 bg-gradient-to-br from-nust-navy via-nust-royal to-nust-deep text-white rounded-3xl cartoon-card p-6 sm:p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <span class="text-[11px] font-cartoon font-bold uppercase tracking-wider text-nust-gold">🧮 Live Estimator</span>
+                            <h3 class="font-cartoon text-2xl font-bold mt-0.5">NET Aggregate Calculator</h3>
+                        </div>
+                        <!-- Mini Reactive Mascot Face Badge -->
+                        <div id="calc-reaction-emoji" class="w-14 h-14 rounded-2xl bg-nust-gold border-2 border-nust-ink shadow-[3px_3px_0px_#0B192C] flex items-center justify-center text-3xl anim-float">
+                            🤩
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-200 mb-5 leading-relaxed font-medium">
+                        Official Weightage: <strong class="text-nust-gold">75% NET</strong> + <strong class="text-nust-cyan">15% FSc</strong> + <strong class="text-white">10% Matric</strong> (or 25% O-Level + 75% NET).
+                    </p>
+
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-200 mb-1.5">Academic Track</label>
+                            <select id="calc-track" onchange="calculateAggregate()" class="w-full px-3.5 py-2.5 rounded-xl bg-nust-deep border-2 border-nust-ink text-white text-xs sm:text-sm font-bold focus:outline-none focus:border-nust-gold">
+                                <option value="fsc">HSSC / FSc (10% Matric + 15% FSc + 75% NET)</option>
+                                <option value="alevel">O/A-Levels (25% O-Level Equiv. + 75% NET)</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span id="matric-label">Matric / SSC (%)</span>
+                                <span id="matric-val-display" class="text-nust-gold font-cartoon text-sm">90.0%</span>
+                            </div>
+                            <input id="calc-matric" type="range" min="50" max="100" step="0.5" value="90" oninput="calculateAggregate()" class="w-full">
+                        </div>
+
+                        <div id="fsc-input-group">
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>FSc / HSSC (%)</span>
+                                <span id="fsc-val-display" class="text-nust-gold font-cartoon text-sm">86.0%</span>
+                            </div>
+                            <input id="calc-fsc" type="range" min="50" max="100" step="0.5" value="86" oninput="calculateAggregate()" class="w-full">
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between text-xs font-bold mb-1">
+                                <span>NET Score (Out of 200)</span>
+                                <span id="net-val-display" class="text-nust-cyan font-cartoon text-sm">155 / 200</span>
+                            </div>
+                            <input id="calc-net" type="range" min="60" max="200" step="1" value="155" oninput="calculateAggregate()" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Cartoon Merit Meter Result Box -->
+                    <div class="mt-6 p-5 rounded-2xl bg-nust-deep border-2 border-nust-ink shadow-[4px_4px_0px_#00A8E8]">
+                        <div class="flex items-center justify-between mb-2">
+                            <div>
+                                <p class="text-[11px] font-cartoon uppercase tracking-wider text-slate-300 font-bold">Your Merit Aggregate</p>
+                                <p id="aggregate-result" class="font-cartoon text-3xl sm:text-4xl font-bold text-nust-gold mt-0.5">80.03%</p>
+                            </div>
+                            <div class="text-right">
+                                <span id="merit-badge" class="inline-block px-3 py-1 rounded-full text-xs font-cartoon font-bold bg-emerald-400 text-nust-deep border-2 border-nust-ink">
+                                    Top Tier Merit!
+                                </span>
+                                <p id="merit-hint" class="text-[11px] text-slate-200 mt-1.5 max-w-[165px] font-medium">Golden ticket for SEECS, SMME & NBS!</p>
+                            </div>
+                        </div>
+                        <!-- Visual Progress Bar -->
+                        <div class="w-full h-3.5 bg-white/15 rounded-full border border-nust-ink overflow-hidden mt-3">
+                            <div id="merit-progress-bar" class="h-full bg-gradient-to-r from-nust-cyan via-nust-gold to-emerald-400 transition-all duration-300" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 6. RESEARCH, INNOVATION & NSTP CARTOON BENTO SHOWCASE ==================== -->
+    <section id="research" class="py-20 bg-nust-deep text-white border-b-[2.5px] border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-pop flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div>
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-nust-cyan text-nust-deep border-2 border-nust-ink text-xs font-cartoon font-bold">🚀 Innovation Playground</span>
+                    <h2 class="font-cartoon text-3xl sm:text-4xl font-bold mt-2">Research & National Science & Technology Park (NSTP)</h2>
+                    <p class="text-slate-300 mt-2 max-w-2xl text-sm sm:text-base font-medium">
+                        Where student ideas blast off into real startups! Explore Pakistan's first university-hosted tech park and AI research centers.
+                    </p>
+                </div>
+                <button onclick="triggerConfetti(); showToast('Downloading NUST Innovation & Startup Report!', '🚀')" class="self-start px-5 py-3 rounded-2xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs sm:text-sm cartoon-btn flex items-center gap-2">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Innovation Report 2026</span>
+                </button>
+            </div>
+
+            <!-- Bento Grid with Custom Animated Cartoon SVGs -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-7">
+                
+                <!-- Large Feature Card: NSTP with Animated Cartoon Rocket Launch -->
+                <div class="reveal-pop md:col-span-7 bg-gradient-to-br from-nust-navy to-nust-royal rounded-3xl p-7 sm:p-8 border-[2.5px] border-nust-ink shadow-[6px_6px_0px_#00A8E8] flex flex-col justify-between relative overflow-hidden">
+                    <div class="grid sm:grid-cols-12 gap-4 items-center relative z-10">
+                        <div class="sm:col-span-8">
+                            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-nust-gold text-nust-deep border-2 border-nust-ink text-xs font-cartoon font-bold mb-3">
+                                🛸 Pakistan's 1st Tech Park
+                            </span>
+                            <h3 class="font-cartoon text-2xl sm:text-3xl font-bold text-white">National Science & Technology Park (NSTP)</h3>
+                            <p class="text-slate-200 text-sm mt-3 leading-relaxed font-medium">
+                                Spanning 70+ acres at NUST H-12, NSTP launches 110+ high-tech anchor companies and student startups in AI, FinTech, AgriTech, and Clean Energy.
+                            </p>
+                        </div>
+
+                        <!-- Animated Cartoon Rocket SVG -->
+                        <div class="sm:col-span-4 flex justify-center">
+                            <svg class="w-32 h-36 anim-rocket" viewBox="0 0 120 140" fill="none">
+                                <!-- Exhaust Flame -->
+                                <path class="anim-flame" d="M48 104C48 104 42 126 60 136C78 126 72 104 72 104H48Z" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                                <path class="anim-flame" d="M54 104C54 104 51 118 60 124C69 118 66 104 66 104H54Z" fill="#F4A261"/>
+                                <!-- Rocket Fins -->
+                                <path d="M38 78L20 102L42 98Z" fill="#F4A261" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
+                                <path d="M82 78L100 102L78 98Z" fill="#F4A261" stroke="#0B192C" stroke-width="3" stroke-linejoin="round"/>
+                                <!-- Rocket Body -->
+                                <path d="M60 12C40 34 38 74 42 104H78C82 74 80 34 60 12Z" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                                <path d="M60 12C49 24 44 36 42 44H78C76 36 71 24 60 12Z" fill="#00A8E8" stroke="#0B192C" stroke-width="3"/>
+                                <!-- Porthole Window -->
+                                <circle cx="60" cy="66" r="13" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                                <circle cx="56" cy="62" r="4" fill="#FFFFFF"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-4 mt-6 pt-5 border-t-2 border-white/15 relative z-10">
+                        <div>
+                            <p class="font-cartoon text-2xl sm:text-3xl font-bold text-nust-gold">110+</p>
+                            <p class="text-xs text-slate-200 font-semibold">Tech Companies</p>
+                        </div>
+                        <div>
+                            <p class="font-cartoon text-2xl sm:text-3xl font-bold text-nust-cyan">Rs. 12B+</p>
+                            <p class="text-xs text-slate-200 font-semibold">R&D Investment</p>
+                        </div>
+                        <div>
+                            <p class="font-cartoon text-2xl sm:text-3xl font-bold text-white">6,500+</p>
+                            <p class="text-xs text-slate-200 font-semibold">Tech Innovators</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column Stacked Cartoon Cards -->
+                <div class="reveal-pop md:col-span-5 space-y-6">
+                    <!-- NCAI Mini Robot Card -->
+                    <div class="bg-nust-navy rounded-3xl p-6 border-[2.5px] border-nust-ink shadow-[5px_5px_0px_#FFD166] flex items-center gap-4">
+                        <!-- Cartoon Cute Robot SVG -->
+                        <svg class="w-20 h-20 shrink-0 anim-float" viewBox="0 0 90 90" fill="none">
+                            <line x1="45" y1="8" x2="45" y2="20" stroke="#FFD166" stroke-width="3.5" stroke-linecap="round"/>
+                            <circle cx="45" cy="7" r="5" fill="#00A8E8" stroke="#0B192C" stroke-width="2.5"/>
+                            <rect x="20" y="20" width="50" height="40" rx="12" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                            <rect x="27" y="28" width="36" height="20" rx="6" fill="#0B192C"/>
+                            <circle cx="37" cy="38" r="4" fill="#00A8E8"/>
+                            <circle cx="53" cy="38" r="4" fill="#00A8E8"/>
+                            <path d="M39 53H51" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
+                            <rect x="28" y="62" width="34" height="20" rx="6" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-cartoon font-bold text-lg text-nust-gold">National Center of AI (NCAI)</h4>
+                            <p class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">
+                                Headquartered at SEECS, building autonomous robots, medical imaging AI, and smart vision systems.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Patents & Spinning Gears Card -->
+                    <div class="bg-nust-navy rounded-3xl p-6 border-[2.5px] border-nust-ink shadow-[5px_5px_0px_#F4A261] flex items-center gap-4">
+                        <!-- Cartoon Bulb & Atom SVG -->
+                        <svg class="w-20 h-20 shrink-0 anim-float-rev" viewBox="0 0 90 90" fill="none">
+                            <circle cx="45" cy="40" r="22" fill="#FFD166" stroke="#0B192C" stroke-width="3.5"/>
+                            <path d="M36 60H54L51 72H39L36 60Z" fill="#94A3B8" stroke="#0B192C" stroke-width="3"/>
+                            <path d="M40 42L45 34L50 42" stroke="#0B192C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M45 10V14M16 40H20M70 40H74M24 20L27 23M66 20L63 23" stroke="#00A8E8" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-cartoon font-bold text-lg text-nust-cyan">240+ Patents & 25k+ Papers</h4>
+                            <p class="text-xs sm:text-sm text-slate-200 mt-1 leading-relaxed">
+                                Leading Pakistan in WIPO patent filings, commercialized inventions, and global research grants.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 7. CAMPUS LIFE & ILLUSTRATED LANDMARK SWITCHER ==================== -->
+    <section id="campuses" class="py-20 bg-nust-slate border-b-[2.5px] border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-pop text-center max-w-3xl mx-auto mb-10">
+                <span class="inline-block px-3.5 py-1 rounded-full bg-nust-gold border-2 border-nust-ink text-xs font-cartoon font-bold text-nust-deep">🗺️ Nationwide Campuses</span>
+                <h2 class="font-cartoon text-3xl sm:text-4xl font-bold text-nust-navy mt-2">Explore NUST Campuses Across Pakistan</h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base font-medium">
+                    Click each city button to view custom cartoon landmark scenes, hostels, labs, and student societies!
+                </p>
+            </div>
+
+            <!-- Campus Switcher Pills -->
+            <div class="reveal-pop flex flex-wrap justify-center gap-3 mb-10">
+                <button onclick="selectCampus('h12')" data-campus="h12" class="campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white cartoon-btn">
+                    🏔️ H-12 Islamabad
+                </button>
+                <button onclick="selectCampus('eme')" data-campus="eme" class="campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 cartoon-btn">
+                    🤖 CEME Rawalpindi
+                </button>
+                <button onclick="selectCampus('pnec')" data-campus="pnec" class="campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 cartoon-btn">
+                    ⚓ PNEC Karachi
+                </button>
+                <button onclick="selectCampus('cae')" data-campus="cae" class="campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 cartoon-btn">
+                    ✈️ CAE Risalpur
+                </button>
+                <button onclick="selectCampus('nbc')" data-campus="nbc" class="campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 cartoon-btn">
+                    ⛰️ NBC Quetta
+                </button>
+            </div>
+
+            <!-- Dynamic Cartoon Campus Showcase Card -->
+            <div id="campus-display" class="reveal-pop bg-white rounded-3xl cartoon-card overflow-hidden grid lg:grid-cols-12">
+                <!-- Populated dynamically via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 8. NEWS, EVENTS & ANNOUNCEMENTS ==================== -->
+    <section id="news" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="reveal-pop flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+                <div>
+                    <span class="inline-block px-3.5 py-1 rounded-full bg-nust-cyan/20 border-2 border-nust-ink text-xs font-cartoon font-bold text-nust-navy">📣 Campus Pulse</span>
+                    <h2 class="font-cartoon text-3xl sm:text-4xl font-bold text-nust-navy mt-2">News, Notices & Hackathons</h2>
+                </div>
+                
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="filterNews('All')" data-news="All" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-navy text-white border-2 border-nust-ink transition">All Updates</button>
+                    <button onclick="filterNews('Academic Notice')" data-news="Academic Notice" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-slate text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">Academic Notices</button>
+                    <button onclick="filterNews('Event')" data-news="Event" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-slate text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">Events</button>
+                    <button onclick="filterNews('Research')" data-news="Research" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-slate text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition">Research</button>
+                </div>
+            </div>
+
+            <div id="news-grid" class="grid grid-cols-1 md:grid-cols-3 gap-7">
+                <!-- Dynamically rendered -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== 9. COMPREHENSIVE FOOTER ==================== -->
+    <footer id="footer" class="bg-nust-deep text-slate-300 pt-16 pb-10 border-t-[3px] border-nust-ink">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-slate-800">
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-11 h-11 rounded-2xl bg-nust-gold border-2 border-nust-ink flex items-center justify-center font-cartoon font-bold text-nust-deep text-xl shadow-[3px_3px_0px_#00A8E8]">N</div>
+                        <div>
+                            <h3 class="font-cartoon font-bold text-xl text-white">NUST</h3>
+                            <p class="text-xs text-nust-gold font-semibold">Defining Futures</p>
+                        </div>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                        National University of Sciences & Technology, Sector H-12, Islamabad, Pakistan. Chartered by the Government of Pakistan and recognized by HEC & PEC.
+                    </p>
+                    <div class="space-y-2 text-xs text-slate-200 pt-1 font-medium">
+                        <p><i class="fa-solid fa-phone text-nust-gold w-5"></i> UAN: +92-51-111-11-6878 (NUST)</p>
+                        <p><i class="fa-solid fa-envelope text-nust-gold w-5"></i> admissions@nust.edu.pk</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-2 space-y-3">
+                    <h4 class="text-sm font-cartoon font-bold text-white uppercase tracking-wider">Portals</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                        <li><button onclick="openApplyModal()" class="hover:text-nust-gold transition">UG Admissions Portal</button></li>
+                        <li><button onclick="openApplyModal()" class="hover:text-nust-gold transition">PG Admissions Portal</button></li>
+                        <li><button onclick="showToast('Launching Qalam LMS...', '🎓')" class="hover:text-nust-gold transition">Qalam LMS</button></li>
+                        <li><a href="#research" class="hover:text-nust-gold transition">NSTP Tech Park</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-sm font-cartoon font-bold text-white uppercase tracking-wider">Campuses</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                        <li><a href="#campuses" onclick="selectCampus('h12')" class="hover:text-nust-gold transition">H-12 Campus, Islamabad</a></li>
+                        <li><a href="#campuses" onclick="selectCampus('eme')" class="hover:text-nust-gold transition">CEME, Rawalpindi</a></li>
+                        <li><a href="#campuses" onclick="selectCampus('pnec')" class="hover:text-nust-gold transition">PNEC, Karachi</a></li>
+                        <li><a href="#campuses" onclick="selectCampus('cae')" class="hover:text-nust-gold transition">CAE, Risalpur</a></li>
+                        <li><a href="#campuses" onclick="selectCampus('nbc')" class="hover:text-nust-gold transition">NBC, Quetta</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-3 space-y-3">
+                    <h4 class="text-sm font-cartoon font-bold text-white uppercase tracking-wider">Campus Alerts</h4>
+                    <p class="text-xs text-slate-300 leading-relaxed">Subscribe for NET registration alerts, merit lists, and hackathon invites.</p>
+                    <form onsubmit="handleNewsletter(event)" class="flex gap-2">
+                        <input id="newsletter-email" type="email" required placeholder="Enter your email" class="w-full px-3.5 py-2.5 rounded-xl bg-white/10 border-2 border-white/20 text-xs text-white placeholder-slate-400 focus:outline-none focus:border-nust-gold">
+                        <button type="submit" class="px-4 py-2.5 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn shrink-0">
+                            Join
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+                <p>© 2026 National University of Sciences & Technology (NUST). All Rights Reserved.</p>
+                <div class="flex items-center gap-3 font-cartoon">
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-nust-gold border border-white/15">HEC Recognized</span>
+                    <span class="px-3 py-1 rounded-full bg-white/10 text-nust-cyan border border-white/15">PEC Accredited</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== MODALS & TOAST NOTIFICATION ==================== -->
+
+    <!-- 1. Program Details & Fee Modal -->
+    <div id="program-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-nust-deep/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full cartoon-card overflow-hidden anim-squash">
+            <div class="bg-nust-navy text-white p-6 flex items-start justify-between border-b-[2.5px] border-nust-ink">
+                <div>
+                    <span id="modal-prog-school" class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-gold">SEECS — H-12 Islamabad</span>
+                    <h3 id="modal-prog-title" class="font-cartoon text-2xl font-bold mt-1">BS Computer Science</h3>
+                </div>
+                <button onclick="closeProgramModal()" class="w-9 h-9 rounded-xl bg-nust-gold text-nust-deep border-2 border-nust-ink flex items-center justify-center font-bold hover:scale-105 transition">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-5 max-h-[75vh] overflow-y-auto">
+                <div class="grid grid-cols-3 gap-3 text-center">
+                    <div class="p-3 rounded-2xl bg-nust-slate border-2 border-nust-ink">
+                        <p class="text-[11px] text-slate-500 font-bold">⏳ Duration</p>
+                        <p id="modal-prog-duration" class="text-xs sm:text-sm font-extrabold text-nust-navy mt-0.5">4 Years</p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-nust-slate border-2 border-nust-ink">
+                        <p class="text-[11px] text-slate-500 font-bold">📝 Entry Test</p>
+                        <p id="modal-prog-test" class="text-xs sm:text-sm font-extrabold text-nust-navy mt-0.5">NET / SAT</p>
+                    </div>
+                    <div class="p-3 rounded-2xl bg-nust-gold/30 border-2 border-nust-ink">
+                        <p class="text-[11px] text-slate-700 font-bold">💰 Tuition Fee</p>
+                        <p id="modal-prog-fee" class="text-xs sm:text-sm font-extrabold text-nust-navy mt-0.5">PKR 178,500</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-navy mb-2">Program Overview & Eligibility</h4>
+                    <p id="modal-prog-desc" class="text-sm text-slate-700 leading-relaxed"></p>
+                </div>
+
+                <div>
+                    <h4 class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-navy mb-2">Core Curriculum Modules</h4>
+                    <div id="modal-prog-modules" class="flex flex-wrap gap-2"></div>
+                </div>
+
+                <div class="pt-4 border-t-2 border-slate-100 flex flex-wrap justify-end gap-3">
+                    <button onclick="closeProgramModal()" class="px-5 py-2.5 rounded-xl border-2 border-nust-ink text-slate-800 font-cartoon font-bold text-xs hover:bg-slate-100 transition">Close</button>
+                    <button onclick="closeProgramModal(); openApplyModal();" class="px-6 py-2.5 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn">
+                        Apply for This Program 🚀
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Apply Now (NET Registration) Modal -->
+    <div id="apply-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-nust-deep/80 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full cartoon-card overflow-hidden anim-squash">
+            <div class="bg-nust-navy text-white p-6 flex items-center justify-between border-b-[2.5px] border-nust-ink">
+                <div>
+                    <span class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-gold">🦉 Online Admissions Portal</span>
+                    <h3 class="font-cartoon text-xl font-bold mt-0.5">Start Your NUST Application</h3>
+                </div>
+                <button onclick="closeApplyModal()" class="w-9 h-9 rounded-xl bg-nust-gold text-nust-deep border-2 border-nust-ink flex items-center justify-center font-bold">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <form onsubmit="submitQuickApplication(event)" class="p-6 space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-800 mb-1">Full Name (As per Matric/CNIC)</label>
+                    <input type="text" required placeholder="e.g. Bilal Ahmed" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-nust-ink text-sm font-semibold focus:outline-none focus:bg-amber-50/40">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">Email Address</label>
+                        <input type="email" required placeholder="student@example.com" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-nust-ink text-sm font-semibold focus:outline-none focus:bg-amber-50/40">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-800 mb-1">CNIC / B-Form</label>
+                        <input type="text" required placeholder="61101-XXXXXXX-X" class="w-full px-3.5 py-2.5 rounded-xl border-2 border-nust-ink text-sm font-semibold focus:outline-none focus:bg-amber-50/40">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-800 mb-1">Admission Stream</label>
+                    <select class="w-full px-3.5 py-2.5 rounded-xl border-2 border-nust-ink text-sm font-semibold bg-white focus:outline-none">
+                        <option>Undergraduate — NET-2027 (Islamabad/Karachi/Quetta)</option>
+                        <option>Undergraduate — SAT / ACT National or International Seat</option>
+                        <option>Postgraduate — MS / MPhil Admissions</option>
+                        <option>Doctoral — PhD Research Track</option>
+                    </select>
+                </div>
+                <div class="bg-sky-50 border-2 border-nust-ink rounded-xl p-3 text-xs font-semibold text-nust-navy">
+                    🎉 Submitting generates your instant Applicant Tracking ID with a celebratory confetti launch!
+                </div>
+                <div class="pt-2 flex justify-end gap-3">
+                    <button type="button" onclick="closeApplyModal()" class="px-4 py-2.5 rounded-xl border-2 border-nust-ink text-xs font-cartoon font-bold text-slate-800">Cancel</button>
+                    <button type="submit" class="px-6 py-2.5 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn">
+                        Generate Applicant ID 🚀
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 3. Global Search Modal -->
+    <div id="search-modal" class="fixed inset-0 z-50 hidden items-start justify-center bg-nust-deep/80 backdrop-blur-sm pt-20 p-4">
+        <div class="bg-white rounded-3xl max-w-xl w-full cartoon-card overflow-hidden anim-squash">
+            <div class="p-4 border-b-2 border-nust-ink flex items-center gap-3 bg-nust-slate">
+                <i class="fa-solid fa-magnifying-glass text-nust-navy"></i>
+                <input id="global-search-input" oninput="handleGlobalSearch(this.value)" type="text" placeholder="Search programs, schools (SEECS, NBS), campuses..." class="w-full bg-transparent text-sm font-bold focus:outline-none">
+                <button onclick="closeSearchModal()" class="text-xs font-cartoon font-bold px-2.5 py-1 rounded-lg bg-nust-gold border border-nust-ink text-nust-deep">ESC</button>
+            </div>
+            <div id="global-search-results" class="p-4 max-h-80 overflow-y-auto space-y-2 text-sm">
+                <p class="text-xs font-semibold text-slate-500">Type to search across NUST programs, schools, and admissions...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Cartoon Toast Message Box -->
+    <div id="toast-box" class="fixed bottom-5 right-5 z-50 hidden items-center gap-3 px-5 py-3.5 rounded-2xl bg-nust-gold text-nust-deep text-xs sm:text-sm font-cartoon font-bold cartoon-card anim-squash">
+        <span id="toast-emoji" class="text-lg">🦉</span>
+        <span id="toast-message">Action completed</span>
+    </div>
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // -------------------- MASCOT INTERACTIVE QUOTES --------------------
+        const mascotQuotes = [
+            "\"Salam future NUSTian! Ready to ace NET-2027 and grab chai at C1?\" ☕🦉",
+            "\"Pro Tip: NET has NO negative marking! Answer every single MCQ!\" 🎯✨",
+            "\"Did you know? NUST H-12 spans 707 green acres with deer & peacocks!\" 🦌🌳",
+            "\"Got a startup idea? NSTP at H-12 helps students launch real companies!\" 🚀💡",
+            "\"Use the NET Merit Calculator below—score 78%+ and I'll throw confetti!\" 🎉🧮"
+        ];
+        let quoteIdx = 0;
+
+        function cycleMascotQuote() {
+            quoteIdx = (quoteIdx + 1) % mascotQuotes.length;
+            const speechEl = document.getElementById('mascot-speech-text');
+            const mascotEl = document.getElementById('mascot-container');
+            speechEl.textContent = mascotQuotes[quoteIdx];
+            mascotEl.classList.remove('anim-squash');
+            void mascotEl.offsetWidth; // trigger reflow
+            mascotEl.classList.add('anim-squash');
+        }
+
+        // -------------------- CONFETTI PARTICLE ENGINE --------------------
+        const confettiCanvas = document.getElementById('confetti-canvas');
+        const ctx = confettiCanvas.getContext('2d');
+        let particles = [];
+        let confettiAnimId = null;
+
+        function resizeConfetti() {
+            confettiCanvas.width = window.innerWidth;
+            confettiCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeConfetti);
+        resizeConfetti();
+
+        function triggerConfetti() {
+            const colors = ['#FFD166', '#00A8E8', '#F4A261', '#10B981', '#EC4899', '#FFFFFF'];
+            for (let i = 0; i < 95; i++) {
+                particles.push({
+                    x: window.innerWidth * (0.25 + Math.random() * 0.5),
+                    y: window.innerHeight * 0.45,
+                    vx: (Math.random() - 0.5) * 14,
+                    vy: (Math.random() - 1.1) * 14,
+                    size: 7 + Math.random() * 7,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    rotation: Math.random() * 360,
+                    vRot: (Math.random() - 0.5) * 12,
+                    life: 100 + Math.random() * 40
+                });
+            }
+            if (!confettiAnimId) animateConfetti();
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+            particles.forEach((p, idx) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy += 0.35; // gravity
+                p.rotation += p.vRot;
+                p.life -= 1;
+
+                ctx.save();
+                ctx.translate(p.x, p.y);
+                ctx.rotate((p.rotation * Math.PI) / 180);
+                ctx.fillStyle = p.color;
+                ctx.strokeStyle = '#0B192C';
+                ctx.lineWidth = 1.5;
+                ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                ctx.strokeRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.65);
+                ctx.restore();
+
+                if (p.life <= 0) particles.splice(idx, 1);
+            });
+
+            if (particles.length > 0) {
+                confettiAnimId = requestAnimationFrame(animateConfetti);
+            } else {
+                confettiAnimId = null;
+            }
+        }
+
+        // -------------------- MOUSE PARALLAX FOR HERO DOODLES --------------------
+        document.getElementById('hero-section').addEventListener('mousemove', (e) => {
+            const items = document.querySelectorAll('.parallax-item');
+            const x = (e.clientX - window.innerWidth / 2);
+            const y = (e.clientY - window.innerHeight / 2);
+            items.forEach(el => {
+                const speed = parseFloat(el.dataset.speed || 0.02);
+                el.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // -------------------- DATA STORE --------------------
+        const programsData = [
+            {
+                id: 1,
+                emoji: "💻",
+                badgeBg: "bg-sky-100",
+                title: "BS Computer Science",
+                school: "SEECS",
+                discipline: "Computing",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Engineering / ICS / SAT",
+                fee: "PKR 178,500 / Sem",
+                description: "Accredited by NCEAC, BSCS at SEECS equips students with deep expertise in algorithms, distributed systems, software engineering, and machine intelligence.",
+                modules: ["Data Structures", "Operating Systems", "Machine Learning", "Distributed Systems", "Compiler Design"]
+            },
+            {
+                id: 2,
+                emoji: "🤖",
+                badgeBg: "bg-amber-100",
+                title: "BS Artificial Intelligence",
+                school: "SEECS",
+                discipline: "Computing",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Engineering / ICS",
+                fee: "PKR 178,500 / Sem",
+                description: "Designed in collaboration with the National Center of Artificial Intelligence (NCAI), focusing on neural networks, computer vision, NLP, and robotics.",
+                modules: ["Deep Learning", "Computer Vision", "Natural Language Processing", "Reinforcement Learning", "AI Ethics"]
+            },
+            {
+                id: 3,
+                emoji: "⚙️",
+                badgeBg: "bg-orange-100",
+                title: "BE Mechanical Engineering",
+                school: "SMME",
+                discipline: "Engineering",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Engineering / SAT",
+                fee: "PKR 178,500 / Sem",
+                description: "PEC Washington Accord accredited degree emphasizing thermo-fluids, CAD/CAM manufacturing, industrial automation, and sustainable energy systems.",
+                modules: ["Thermodynamics", "Fluid Mechanics", "Machine Design", "Control Systems", "Robotics & Mechatronics"]
+            },
+            {
+                id: 4,
+                emoji: "📈",
+                badgeBg: "bg-emerald-100",
+                title: "Bachelor of Business Admin (BBA)",
+                school: "NBS",
+                discipline: "Business",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Business / SAT",
+                fee: "PKR 195,000 / Sem",
+                description: "Pakistan’s top-ranked business degree developing entrepreneurial leaders with strong analytical foundations in FinTech, strategy, and global supply chains.",
+                modules: ["Financial Accounting", "Corporate Finance", "Marketing Analytics", "Strategic Management", "Venture Creation"]
+            },
+            {
+                id: 5,
+                emoji: "🌍",
+                badgeBg: "bg-purple-100",
+                title: "BS Economics",
+                school: "S3H",
+                discipline: "Social Sciences",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Business & Social Sciences",
+                fee: "PKR 158,000 / Sem",
+                description: "Quantitative and policy-driven curriculum preparing economists for central banks, international development agencies, and data analytics roles.",
+                modules: ["Microeconomic Theory", "Macroeconomics", "Econometrics", "Public Policy", "Game Theory"]
+            },
+            {
+                id: 6,
+                emoji: "🏛️",
+                badgeBg: "bg-rose-100",
+                title: "Bachelor of Architecture (B.Arch)",
+                school: "SADA",
+                discipline: "Architecture",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "5 Years (10 Semesters)",
+                test: "NET-Architecture (Aptitude)",
+                fee: "PKR 182,000 / Sem",
+                description: "PCATP accredited 5-year studio-intensive program blending sustainable urbanism, parametric design, and cultural heritage conservation.",
+                modules: ["Design Studios", "Parametric Fabrication", "Sustainable Urbanism", "Structural Systems"]
+            },
+            {
+                id: 7,
+                emoji: "🧬",
+                badgeBg: "bg-teal-100",
+                title: "BS Applied Biosciences",
+                school: "ASAB",
+                discipline: "Natural Sciences",
+                level: "Undergraduate",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "4 Years (8 Semesters)",
+                test: "NET-Applied Sciences",
+                fee: "PKR 168,000 / Sem",
+                description: "Hands-on laboratory training in molecular genetics, bioinformatics, biopharmaceuticals, and clinical diagnostics.",
+                modules: ["Molecular Biology", "Genetic Engineering", "Bioinformatics", "Immunology", "Bioprocess Tech"]
+            },
+            {
+                id: 8,
+                emoji: "🧠",
+                badgeBg: "bg-indigo-100",
+                title: "MS Data Science & AI",
+                school: "SEECS",
+                discipline: "Computing",
+                level: "Masters",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "2 Years (4 Semesters)",
+                test: "GNET / GAT-General",
+                fee: "PKR 132,000 / Sem",
+                description: "Advanced postgraduate degree tailored for researchers and engineers building large-scale predictive and generative AI pipelines.",
+                modules: ["Statistical Learning", "Big Data Analytics", "Deep Generative Models", "MS Thesis"]
+            },
+            {
+                id: 9,
+                emoji: "🛸",
+                badgeBg: "bg-yellow-100",
+                title: "PhD Robotics & Intelligent Systems",
+                school: "SMME",
+                discipline: "Engineering",
+                level: "PhD",
+                campus: "H-12 Main Campus, Islamabad",
+                duration: "3–5 Years",
+                test: "GAT-Subject / GRE + Interview",
+                fee: "Full Research Fellowships",
+                description: "Doctoral research program supported by funded robotics labs at SMME and NSTP, focusing on aerial drones and human-robot interaction.",
+                modules: ["Advanced Control Theory", "Autonomous Navigation", "Doctoral Dissertation"]
+            }
+        ];
+
+        const admissionsTabsData = {
+            ug: {
+                title: "Undergraduate Admissions (Fall Intake)",
+                badge: "NET Series 1 – 4 & SAT",
+                steps: [
+                    { step: "01", name: "Online Registration & Profile", date: "Nov – June", detail: "Create account on ugadmissions.nust.edu.pk and select desired test series." },
+                    { step: "02", name: "NUST Entry Test (NET)", date: "Dec, Feb, Apr & Jul", detail: "Computer-based test in Islamabad, or paper-based in Karachi, Quetta & Gilgit." },
+                    { step: "03", name: "Merit Position & Preferences", date: "August", detail: "Update degree preferences online after final NET results are announced." },
+                    { step: "04", name: "Selection Lists & Orientation", date: "Aug – Sep", detail: "Download provisional admission offer letter and join Orientation Week at H-12." }
+                ]
+            },
+            pg: {
+                title: "Postgraduate Admissions (MS / MBA / PhD)",
+                badge: "GNET / GAT / GRE",
+                steps: [
+                    { step: "01", name: "Online PG Portal Application", date: "March – May", detail: "Submit academic transcripts, statement of purpose, and test scores." },
+                    { step: "02", name: "GNET / GAT & Interview", date: "June – July", detail: "PhD applicants appear for subject test and faculty research committee interview." },
+                    { step: "03", name: "Merit List & Fellowships", date: "August", detail: "Top merit students qualify for NUST Teaching & Research Assistantships." }
+                ]
+            },
+            intl: {
+                title: "International & Overseas Pakistani Track",
+                badge: "SAT / ACT / GRE",
+                steps: [
+                    { step: "01", name: "International Seat Application", date: "Jan – July", detail: "Dedicated quota for foreign nationals and overseas Pakistanis holding valid SAT/ACT." },
+                    { step: "02", name: "IBCC Equivalence Submission", date: "August", detail: "Submit O/A-Level or High School Diploma equivalence certificates." },
+                    { step: "03", name: "Visa & On-Campus Housing", date: "September", detail: "Guaranteed international hostel accommodation and dedicated International Office support." }
+                ]
+            }
+        };
+
+        // Custom Cartoon Vector Scenes for Each NUST Campus!
+        const campusesData = {
+            h12: {
+                name: "NUST Main Campus — Sector H-12, Islamabad",
+                tagline: "707-Acre Flagship Green Tech Campus at Margalla Foothills",
+                svgScene: `
+                    <svg viewBox="0 0 420 320" class="w-full h-full" fill="none">
+                        <rect width="420" height="320" fill="#BAE6FD"/>
+                        <!-- Margalla Hills -->
+                        <path d="M0 190L95 105L185 180L290 95L420 195V320H0V190Z" fill="#38BDF8" stroke="#0B192C" stroke-width="3"/>
+                        <path d="M0 215L125 140L245 215L355 135L420 190V320H0V215Z" fill="#10B981" stroke="#0B192C" stroke-width="3"/>
+                        <!-- Sun & Clouds -->
+                        <circle cx="345" cy="58" r="24" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                        <path d="M55 72H115C123 72 129 66 129 59C129 52 123 47 116 46C113 38 105 33 96 33C85 33 76 40 74 49C64 49 55 56 55 64C55 69 55 72 55 72Z" fill="#FFFFFF" stroke="#0B192C" stroke-width="2.5"/>
+                        <!-- Iconic NUST H-12 Main Clock Tower -->
+                        <rect x="175" y="105" width="70" height="155" fill="#FFFBEB" stroke="#0B192C" stroke-width="3.5"/>
+                        <path d="M168 105L210 68L252 105H168Z" fill="#002147" stroke="#0B192C" stroke-width="3.5"/>
+                        <circle cx="210" cy="135" r="18" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                        <path d="M210 135V124M210 135L218 139" stroke="#0B192C" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Side Wings -->
+                        <rect x="95" y="165" width="80" height="95" fill="#F8FAFC" stroke="#0B192C" stroke-width="3"/>
+                        <rect x="245" y="165" width="80" height="95" fill="#F8FAFC" stroke="#0B192C" stroke-width="3"/>
+                        <!-- Lawn & Trees -->
+                        <rect x="0" y="258" width="420" height="62" fill="#34D399" stroke="#0B192C" stroke-width="3"/>
+                        <circle cx="62" cy="236" r="22" fill="#059669" stroke="#0B192C" stroke-width="3"/>
+                        <rect x="58" y="254" width="8" height="16" fill="#92400E" stroke="#0B192C" stroke-width="2"/>
+                        <circle cx="358" cy="236" r="22" fill="#059669" stroke="#0B192C" stroke-width="3"/>
+                        <rect x="354" y="254" width="8" height="16" fill="#92400E" stroke="#0B192C" stroke-width="2"/>
+                    </svg>
+                `,
+                description: "The nerve center of NUST housing 11 constituent schools, the National Science & Technology Park (NSTP), Central Library, Sports Complex, and 18+ residential hostels.",
+                highlights: [
+                    { icon: "🛏️", title: "18+ On-Campus Hostels", sub: "Separate secure residences for male & female students" },
+                    { icon: "🏟️", title: "Olympic Sports Complex", sub: "Cricket, football, indoor gym, bowling & tennis courts" },
+                    { icon: "📖", title: "Central Digital Library", sub: "24/7 study halls & 500,000+ research journals" },
+                    { icon: "🎭", title: "45+ Student Societies", sub: "Robotics, Dramatics, Debate, IEEE, ACM & NCSC" }
+                ]
+            },
+            eme: {
+                name: "College of Electrical & Mechanical Engineering (CEME)",
+                tagline: "Peshawar Road, Rawalpindi — Robotics & Engineering Heritage",
+                svgScene: `
+                    <svg viewBox="0 0 420 320" class="w-full h-full" fill="none">
+                        <rect width="420" height="320" fill="#FEF3C7"/>
+                        <circle cx="340" cy="65" r="26" fill="#F4A261" stroke="#0B192C" stroke-width="3"/>
+                        <!-- CEME Building -->
+                        <rect x="75" y="130" width="270" height="130" rx="8" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                        <rect x="75" y="115" width="270" height="20" fill="#002147" stroke="#0B192C" stroke-width="3"/>
+                        <!-- Giant Cartoon Gear & Robot Emblem -->
+                        <circle cx="210" cy="190" r="36" fill="#00A8E8" stroke="#0B192C" stroke-width="3.5"/>
+                        <rect x="194" y="176" width="32" height="24" rx="5" fill="#FFD166" stroke="#0B192C" stroke-width="2.5"/>
+                        <circle cx="203" cy="186" r="3" fill="#0B192C"/>
+                        <circle cx="217" cy="186" r="3" fill="#0B192C"/>
+                        <rect x="0" y="258" width="420" height="62" fill="#6EE7B7" stroke="#0B192C" stroke-width="3"/>
+                    </svg>
+                `,
+                description: "Renowned for disciplined, hands-on engineering training in Mechatronics, Computer, Electrical, and Mechanical Engineering with state-of-the-art robotics workshops.",
+                highlights: [
+                    { icon: "🤖", title: "National Robotics Olympiad", sub: "Home to Pakistan's premier student robotics teams" },
+                    { icon: "⚙️", title: "Advanced CNC & Mechatronics", sub: "Embedded systems & industrial automation labs" },
+                    { icon: "🏠", title: "Residential Campus", sub: "Full boarding hostels and athletic grounds" },
+                    { icon: "🏅", title: "PEC Level-II Accredited", sub: "Globally recognized Washington Accord degrees" }
+                ]
+            },
+            pnec: {
+                name: "Pakistan Navy Engineering College (PNEC)",
+                tagline: "Karachi — Coastal & Maritime Engineering Hub",
+                svgScene: `
+                    <svg viewBox="0 0 420 320" class="w-full h-full" fill="none">
+                        <rect width="420" height="320" fill="#E0F2FE"/>
+                        <circle cx="80" cy="65" r="24" fill="#FFD166" stroke="#0B192C" stroke-width="3"/>
+                        <!-- Cartoon Ship & Lighthouse -->
+                        <path d="M120 205H310L285 245H145L120 205Z" fill="#002147" stroke="#0B192C" stroke-width="3.5"/>
+                        <rect x="165" y="165" width="90" height="40" fill="#FFFFFF" stroke="#0B192C" stroke-width="3"/>
+                        <rect x="195" y="135" width="22" height="30" fill="#F4A261" stroke="#0B192C" stroke-width="3"/>
+                        <!-- Ocean Waves -->
+                        <path d="M0 245C45 232 90 258 135 245C180 232 225 258 270 245C315 232 360 258 420 245V320H0V245Z" fill="#00A8E8" stroke="#0B192C" stroke-width="3"/>
+                    </svg>
+                `,
+                description: "Strategically located in Pakistan’s industrial capital Karachi, offering premier programs in Naval Architecture, Mechanical, Electrical, and Management Information Systems.",
+                highlights: [
+                    { icon: "🚢", title: "Naval Architecture & Marine", sub: "Specialized maritime & hydrodynamic testing labs" },
+                    { icon: "🏭", title: "Corporate & Industrial Ties", sub: "Direct internships across Karachi's tech & industrial hubs" },
+                    { icon: "🏎️", title: "Formula Student Team", sub: "Award-winning student electric & combustion race cars" },
+                    { icon: "📡", title: "Smart Coastal Campus", sub: "Modern auditoriums, labs & student activity center" }
+                ]
+            },
+            cae: {
+                name: "College of Aeronautical Engineering (CAE)",
+                tagline: "Risalpur — Center of Excellence in Aerospace & Avionics",
+                svgScene: `
+                    <svg viewBox="0 0 420 320" class="w-full h-full" fill="none">
+                        <rect width="420" height="320" fill="#DBEAFE"/>
+                        <!-- Cartoon Supersonic Jet -->
+                        <g transform="translate(120, 85) rotate(-12)">
+                            <path d="M10 45L140 25L175 45L140 65L10 45Z" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                            <path d="M65 35L95 5L115 32" fill="#00A8E8" stroke="#0B192C" stroke-width="3"/>
+                            <path d="M65 55L95 85L115 58" fill="#00A8E8" stroke="#0B192C" stroke-width="3"/>
+                            <ellipse cx="135" cy="45" rx="16" ry="7" fill="#FFD166" stroke="#0B192C" stroke-width="2.5"/>
+                        </g>
+                        <rect x="0" y="255" width="420" height="65" fill="#86EFAC" stroke="#0B192C" stroke-width="3"/>
+                    </svg>
+                `,
+                description: "Offering specialized BE and MS degrees in Aerospace Engineering and Avionics Engineering with wind tunnels, propulsion labs, and flight simulation facilities.",
+                highlights: [
+                    { icon: "✈️", title: "Supersonic Wind Tunnels", sub: "Dedicated aerodynamics and propulsion testing labs" },
+                    { icon: "🛰️", title: "Avionics & Radar Labs", sub: "Cutting-edge guidance, navigation & control research" },
+                    { icon: "🌲", title: "Scenic Residential Campus", sub: "Complete athletic, flying club & boarding facilities" },
+                    { icon: "📜", title: "PEC Accredited", sub: "Top aerospace engineering institution in South Asia" }
+                ]
+            },
+            nbc: {
+                name: "NUST Balochistan Campus (NBC)",
+                tagline: "Quetta — Empowering Innovation in Balochistan",
+                svgScene: `
+                    <svg viewBox="0 0 420 320" class="w-full h-full" fill="none">
+                        <rect width="420" height="320" fill="#FFEDD5"/>
+                        <!-- Quetta Mountains -->
+                        <path d="M0 210L110 95L215 200L325 85L420 195V320H0V210Z" fill="#FDBA74" stroke="#0B192C" stroke-width="3"/>
+                        <rect x="115" y="165" width="190" height="95" rx="8" fill="#FFFFFF" stroke="#0B192C" stroke-width="3.5"/>
+                        <path d="M105 165L210 120L315 165H105Z" fill="#002147" stroke="#0B192C" stroke-width="3.5"/>
+                        <rect x="0" y="258" width="420" height="62" fill="#A7F3D0" stroke="#0B192C" stroke-width="3"/>
+                    </svg>
+                `,
+                description: "Bringing NUST’s world-class quality standards to Quetta with specialized degrees in Civil Engineering, Mining Engineering, and Computer Science.",
+                highlights: [
+                    { icon: "⛰️", title: "Mining & Civil Engineering", sub: "Tailored to regional infrastructure & mineral development" },
+                    { icon: "💻", title: "Computing & IT Labs", sub: "High-speed fiber connectivity & modern labs" },
+                    { icon: "🎓", title: "Generous Financial Aid", sub: "Need-based scholarships for deserving students" },
+                    { icon: "🏫", title: "Modern Campus Facilities", sub: "Purpose-built classrooms, library & hostels" }
+                ]
+            }
+        };
+
+        const newsData = [
+            {
+                id: 1,
+                emoji: "📢",
+                category: "Academic Notice",
+                date: "Nov 20, 2026",
+                title: "NET-2027 Series-1 Registration & Test Center Selection Schedule",
+                summary: "Online registration for NUST Entry Test (NET) Series-1 is now live for all undergraduate engineering, computing, business, and applied sciences programs."
+            },
+            {
+                id: 2,
+                emoji: "🤖",
+                category: "Event",
+                date: "Nov 15, 2026",
+                title: "NUST International Olympiad & AI Hackathon 2026 at H-12",
+                summary: "Over 1,800 innovators from 60+ universities converged at NUST H-12 for 48 hours of generative AI prototyping, robotics battles, and startup pitching."
+            },
+            {
+                id: 3,
+                emoji: "🚀",
+                category: "Research",
+                date: "Nov 08, 2026",
+                title: "NSTP Startup Secures $3.5M Seed Funding for Clean Energy Grid AI",
+                summary: "Incubated at the National Science & Technology Park, GridSense AI expands smart microgrid deployments across industrial estates."
+            }
+        ];
+
+        // -------------------- PROGRAM EXPLORER LOGIC --------------------
+        let currentLevel = 'All';
+        let currentSchool = 'All';
+        let currentKeyword = '';
+        let currentDiscipline = 'All';
+
+        function renderPrograms() {
+            const grid = document.getElementById('programs-grid');
+            const filtered = programsData.filter(prog => {
+                const matchLevel = currentLevel === 'All' || prog.level === currentLevel;
+                const matchSchool = currentSchool === 'All' || prog.school === currentSchool;
+                const matchDiscipline = currentDiscipline === 'All' || prog.discipline === currentDiscipline;
+                const matchKeyword = currentKeyword === '' || 
+                    prog.title.toLowerCase().includes(currentKeyword.toLowerCase()) ||
+                    prog.school.toLowerCase().includes(currentKeyword.toLowerCase()) ||
+                    prog.discipline.toLowerCase().includes(currentKeyword.toLowerCase());
+                return matchLevel && matchSchool && matchDiscipline && matchKeyword;
+            });
+
+            document.getElementById('program-count-label').innerHTML = 
+                `Showing <span class="text-nust-navy font-extrabold">${filtered.length}</span> ${filtered.length === 1 ? 'program' : 'programs'}`;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full bg-white rounded-3xl p-10 text-center cartoon-card">
+                        <div class="text-4xl mb-2">🦉</div>
+                        <h4 class="font-cartoon font-bold text-nust-navy text-xl">No matching programs found!</h4>
+                        <p class="text-xs text-slate-600 mt-1 font-medium">Try resetting filters or searching a broader keyword.</p>
+                        <button onclick="resetProgramFilters()" class="mt-4 px-5 py-2.5 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn">Reset All Filters</button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(prog => `
+                <div class="bg-white rounded-3xl cartoon-card p-6 flex flex-col justify-between group">
+                    <div>
+                        <div class="flex items-center justify-between gap-2 mb-4">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-11 h-11 rounded-2xl ${prog.badgeBg} border-2 border-nust-ink flex items-center justify-center text-xl shadow-[2px_2px_0px_#0B192C] group-hover:rotate-12 transition-transform">
+                                    ${prog.emoji}
+                                </span>
+                                <span class="px-2.5 py-1 rounded-lg bg-nust-navy text-white text-xs font-cartoon font-bold">${prog.school}</span>
+                            </div>
+                            <span class="text-[11px] font-cartoon font-bold px-3 py-1 rounded-full bg-nust-gold text-nust-deep border-2 border-nust-ink">${prog.level}</span>
+                        </div>
+                        <h3 class="font-cartoon text-xl font-bold text-slate-900 group-hover:text-nust-navy transition">${prog.title}</h3>
+                        <p class="text-xs font-semibold text-slate-500 mt-1.5 flex items-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-nust-cyan"></i> ${prog.campus}
+                        </p>
+                        <div class="mt-4 pt-4 border-t-2 border-slate-100 space-y-2 text-xs text-slate-700">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500 font-semibold">Duration:</span>
+                                <span class="font-extrabold text-nust-navy">${prog.duration}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500 font-semibold">Entry Test:</span>
+                                <span class="font-extrabold text-nust-navy">${prog.test}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-2">
+                        <button onclick="openProgramModal(${prog.id})" class="w-full py-2.5 px-4 rounded-xl bg-nust-slate hover:bg-nust-gold text-nust-navy font-cartoon font-bold text-xs cartoon-btn flex items-center justify-center gap-2">
+                            <span>View Curriculum & Fee</span>
+                            <i class="fa-solid fa-arrow-right text-[11px]"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function setProgramLevel(level) {
+            currentLevel = level;
+            document.querySelectorAll('.level-btn').forEach(btn => {
+                if (btn.dataset.level === level) {
+                    btn.className = "level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white transition";
+                } else {
+                    btn.className = "level-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-cartoon font-bold text-slate-700 hover:text-nust-navy transition";
+                }
+            });
+            renderPrograms();
+        }
+
+        function setProgramSchool(school) {
+            currentSchool = school;
+            document.querySelectorAll('.school-chip').forEach(chip => {
+                if (chip.dataset.school === school) {
+                    chip.className = "school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-nust-gold text-nust-deep border-2 border-nust-ink shadow-[2px_2px_0px_#0B192C] transition";
+                } else {
+                    chip.className = "school-chip whitespace-nowrap px-4 py-2 rounded-full text-xs font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-sky-50 transition";
+                }
+            });
+            renderPrograms();
+        }
+
+        function filterProgramsBySchool(school) {
+            setProgramSchool(school);
+        }
+
+        function executeHeroSearch() {
+            currentKeyword = document.getElementById('hero-search-input').value.trim();
+            const levelVal = document.getElementById('hero-level-select').value;
+            const discVal = document.getElementById('hero-discipline-select').value;
+            currentDiscipline = discVal;
+            setProgramLevel(levelVal);
+            document.getElementById('programs').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetProgramFilters() {
+            currentKeyword = '';
+            currentDiscipline = 'All';
+            document.getElementById('hero-search-input').value = '';
+            document.getElementById('hero-level-select').value = 'All';
+            document.getElementById('hero-discipline-select').value = 'All';
+            setProgramSchool('All');
+            setProgramLevel('All');
+        }
+
+        // -------------------- ADMISSIONS TABS & NET CALCULATOR --------------------
+        function switchAdmissionTab(tabKey) {
+            document.querySelectorAll('.adm-tab').forEach(btn => {
+                btn.className = "adm-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition";
+            });
+            const activeBtn = document.getElementById(`tab-${tabKey}`);
+            activeBtn.className = "adm-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white border-2 border-nust-ink transition";
+
+            const data = admissionsTabsData[tabKey];
+            const container = document.getElementById('admission-tab-content');
+            container.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+                    <h3 class="font-cartoon text-xl sm:text-2xl font-bold text-nust-navy">${data.title}</h3>
+                    <span class="px-3 py-1 rounded-full bg-nust-gold text-nust-deep border-2 border-nust-ink text-xs font-cartoon font-bold">${data.badge}</span>
+                </div>
+                <div class="space-y-3.5">
+                    ${data.steps.map(item => `
+                        <div class="bg-white rounded-2xl p-4 cartoon-card-sm flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-nust-navy text-nust-gold border-2 border-nust-ink font-cartoon font-bold text-sm flex items-center justify-center shrink-0">
+                                ${item.step}
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex flex-wrap items-center justify-between gap-1">
+                                    <h4 class="font-bold text-sm text-slate-900">${item.name}</h4>
+                                    <span class="text-xs font-cartoon font-bold text-nust-cyan bg-sky-50 px-2.5 py-0.5 rounded-full border border-sky-200">${item.date}</span>
+                                </div>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed font-medium">${item.detail}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="mt-6 flex flex-wrap items-center justify-between gap-3 pt-4 border-t-2 border-slate-200">
+                    <span class="text-xs font-semibold text-slate-600">💡 Need-based financial aid & HONHAAR scholarships available.</span>
+                    <button onclick="openApplyModal()" class="px-5 py-2.5 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn">
+                        Apply Online Now 🚀
+                    </button>
+                </div>
+            `;
+        }
+
+        let celebratedHighMerit = false;
+        function calculateAggregate() {
+            const track = document.getElementById('calc-track').value;
+            const matric = parseFloat(document.getElementById('calc-matric').value);
+            const fsc = parseFloat(document.getElementById('calc-fsc').value);
+            const net = parseFloat(document.getElementById('calc-net').value);
+
+            const fscGroup = document.getElementById('fsc-input-group');
+            const matricLabel = document.getElementById('matric-label');
+
+            let aggregate = 0;
+            if (track === 'alevel') {
+                fscGroup.classList.add('opacity-40', 'pointer-events-none');
+                matricLabel.textContent = "O-Level Equivalence (%)";
+                aggregate = (matric * 0.25) + ((net / 200) * 75);
+            } else {
+                fscGroup.classList.remove('opacity-40', 'pointer-events-none');
+                matricLabel.textContent = "Matric / SSC (%)";
+                aggregate = (matric * 0.10) + (fsc * 0.15) + ((net / 200) * 75);
+            }
+
+            document.getElementById('matric-val-display').textContent = `${matric.toFixed(1)}%`;
+            document.getElementById('fsc-val-display').textContent = `${fsc.toFixed(1)}%`;
+            document.getElementById('net-val-display').textContent = `${net} / 200`;
+            document.getElementById('aggregate-result').textContent = `${aggregate.toFixed(2)}%`;
+            document.getElementById('merit-progress-bar').style.width = `${Math.min(100, Math.max(10, aggregate))}%`;
+
+            const badge = document.getElementById('merit-badge');
+            const hint = document.getElementById('merit-hint');
+            const emoji = document.getElementById('calc-reaction-emoji');
+
+            if (aggregate >= 78) {
+                badge.textContent = "Top Tier Merit! 🏆";
+                badge.className = "inline-block px-3 py-1 rounded-full text-xs font-cartoon font-bold bg-emerald-400 text-nust-deep border-2 border-nust-ink";
+                hint.textContent = "Golden ticket for SEECS, SMME & NBS!";
+                emoji.textContent = "🤩";
+                if (!celebratedHighMerit) {
+                    celebratedHighMerit = true;
+                    triggerConfetti();
+                }
+            } else if (aggregate >= 68) {
+                celebratedHighMerit = false;
+                badge.textContent = "Strong Merit ✨";
+                badge.className = "inline-block px-3 py-1 rounded-full text-xs font-cartoon font-bold bg-nust-gold text-nust-deep border-2 border-nust-ink";
+                hint.textContent = "Strong chance in Engineering & Sciences";
+                emoji.textContent = "😎";
+            } else {
+                celebratedHighMerit = false;
+                badge.textContent = "Boost NET Score 💪";
+                badge.className = "inline-block px-3 py-1 rounded-full text-xs font-cartoon font-bold bg-rose-400 text-nust-deep border-2 border-nust-ink";
+                hint.textContent = "Aim for 145+ in next NET series!";
+                emoji.textContent = "🤓";
+            }
+        }
+
+        // -------------------- CAMPUS SWITCHER --------------------
+        function selectCampus(key) {
+            document.querySelectorAll('.campus-btn').forEach(btn => {
+                if (btn.dataset.campus === key) {
+                    btn.className = "campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-nust-navy text-white cartoon-btn";
+                } else {
+                    btn.className = "campus-btn px-5 py-2.5 rounded-2xl text-xs sm:text-sm font-cartoon font-bold bg-white text-slate-800 cartoon-btn";
+                }
+            });
+
+            const c = campusesData[key];
+            document.getElementById('campus-display').innerHTML = `
+                <div class="lg:col-span-5 relative min-h-[260px] lg:min-h-full bg-sky-100 border-b-[2.5px] lg:border-b-0 lg:border-r-[2.5px] border-nust-ink flex flex-col justify-between">
+                    <div class="w-full h-full flex items-center justify-center">
+                        ${c.svgScene}
+                    </div>
+                    <div class="p-4 bg-white/90 border-t-2 border-nust-ink flex items-center justify-between">
+                        <span class="text-xs font-cartoon font-bold text-nust-navy">🎨 Illustrated Campus View</span>
+                        <button onclick="showToast('Launching 360° Interactive Campus Tour!', '🥽')" class="px-3.5 py-2 rounded-xl bg-nust-gold text-nust-deep font-cartoon font-bold text-xs cartoon-btn">
+                            360° Tour 🚀
+                        </button>
+                    </div>
+                </div>
+                <div class="lg:col-span-7 p-6 sm:p-9 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs font-cartoon font-bold uppercase tracking-wider text-nust-cyan">${c.tagline}</span>
+                        <h3 class="font-cartoon text-2xl sm:text-3xl font-bold text-nust-navy mt-1">${c.name}</h3>
+                        <p class="text-sm text-slate-700 mt-3 leading-relaxed font-medium">${c.description}</p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-4 mt-6">
+                            ${c.highlights.map(h => `
+                                <div class="p-3.5 rounded-2xl bg-nust-slate cartoon-card-sm flex items-start gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-nust-gold border-2 border-nust-ink text-lg flex items-center justify-center shrink-0">
+                                        ${h.icon}
+                                    </div>
+                                    <div>
+                                        <h4 class="font-cartoon font-bold text-xs sm:text-sm text-nust-navy">${h.title}</h4>
+                                        <p class="text-xs text-slate-600 mt-0.5 font-medium">${h.sub}</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // -------------------- NEWS & ANNOUNCEMENTS --------------------
+        function filterNews(category) {
+            document.querySelectorAll('.news-filter-btn').forEach(btn => {
+                if (btn.dataset.news === category) {
+                    btn.className = "news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-navy text-white border-2 border-nust-ink transition";
+                } else {
+                    btn.className = "news-filter-btn px-4 py-2 rounded-xl text-xs font-cartoon font-bold bg-nust-slate text-slate-800 border-2 border-nust-ink hover:bg-amber-50 transition";
+                }
+            });
+
+            const filtered = category === 'All' ? newsData : newsData.filter(n => n.category === category);
+            document.getElementById('news-grid').innerHTML = filtered.map(item => `
+                <article class="bg-nust-slate rounded-3xl cartoon-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between text-xs mb-3">
+                            <span class="px-3 py-1 rounded-full font-cartoon font-bold bg-nust-gold text-nust-deep border-2 border-nust-ink">${item.emoji} ${item.category}</span>
+                            <span class="text-slate-500 font-bold">${item.date}</span>
+                        </div>
+                        <h3 class="font-cartoon text-lg font-bold text-nust-navy leading-snug">${item.title}</h3>
+                        <p class="text-xs sm:text-sm text-slate-700 mt-2.5 leading-relaxed font-medium">${item.summary}</p>
+                    </div>
+                    <button onclick="showToast('Opening circular: ${item.title.replace(/'/g, "")}', '${item.emoji}')" class="mt-5 text-xs font-cartoon font-bold text-nust-navy hover:text-nust-cyan inline-flex items-center gap-1.5 transition">
+                        <span>Read Official Circular</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </article>
+            `).join('');
+        }
+
+        // -------------------- MODALS, SEARCH & UTILITIES --------------------
+        function openProgramModal(id) {
+            const prog = programsData.find(p => p.id === id);
+            if (!prog) return;
+            document.getElementById('modal-prog-school').textContent = `${prog.emoji} ${prog.school} — ${prog.campus}`;
+            document.getElementById('modal-prog-title').textContent = prog.title;
+            document.getElementById('modal-prog-duration').textContent = prog.duration;
+            document.getElementById('modal-prog-test').textContent = prog.test;
+            document.getElementById('modal-prog-fee').textContent = prog.fee;
+            document.getElementById('modal-prog-desc').textContent = prog.description;
+            document.getElementById('modal-prog-modules').innerHTML = prog.modules.map(m => 
+                `<span class="px-3 py-1.5 rounded-xl bg-sky-50 border-2 border-nust-ink text-nust-navy text-xs font-bold">${m}</span>`
+            ).join('');
+            
+            const modal = document.getElementById('program-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeProgramModal() {
+            const modal = document.getElementById('program-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function openApplyModal() {
+            const modal = document.getElementById('apply-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeApplyModal() {
+            const modal = document.getElementById('apply-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function submitQuickApplication(e) {
+            e.preventDefault();
+            closeApplyModal();
+            triggerConfetti();
+            const randomId = Math.floor(100000 + Math.random() * 900000);
+            showToast(`Woohoo! Application ID: NUST-2027-${randomId}`, '🎉');
+        }
+
+        function openSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('global-search-input').focus();
+        }
+
+        function closeSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function handleGlobalSearch(query) {
+            const container = document.getElementById('global-search-results');
+            const q = query.trim().toLowerCase();
+            if (!q) {
+                container.innerHTML = `<p class="text-xs font-semibold text-slate-500">Type to search across NUST programs, schools, and admissions...</p>`;
+                return;
+            }
+            const matches = programsData.filter(p => 
+                p.title.toLowerCase().includes(q) || p.school.toLowerCase().includes(q) || p.discipline.toLowerCase().includes(q)
+            );
+            if (matches.length === 0) {
+                container.innerHTML = `<p class="text-xs font-semibold text-slate-500">No direct results for "${query}". Try "Computer", "Mechanical", "BBA", or "SEECS".</p>`;
+                return;
+            }
+            container.innerHTML = matches.map(m => `
+                <button onclick="closeSearchModal(); openProgramModal(${m.id});" class="w-full text-left p-3 rounded-2xl hover:bg-nust-gold/25 border-2 border-transparent hover:border-nust-ink flex items-center justify-between transition">
+                    <div>
+                        <p class="font-cartoon font-bold text-nust-navy text-sm">${m.emoji} ${m.title}</p>
+                        <p class="text-xs text-slate-600 font-semibold">${m.school} • ${m.level}</p>
+                    </div>
+                    <i class="fa-solid fa-arrow-right text-xs text-nust-navy"></i>
+                </button>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            document.getElementById('newsletter-email').value = '';
+            triggerConfetti();
+            showToast('Subscribed to NUST Official Admissions & Research Alerts!', '🦉');
+        }
+
+        let toastTimer;
+        function showToast(msg, emoji = '🦉') {
+            const box = document.getElementById('toast-box');
+            document.getElementById('toast-message').textContent = msg;
+            document.getElementById('toast-emoji').textContent = emoji;
+            box.classList.remove('hidden');
+            box.classList.add('flex');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                box.classList.add('hidden');
+                box.classList.remove('flex');
+            }, 4000);
+        }
+
+        // Scroll Reveal Observer for Pop-In Cartoon Motion
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, { threshold: 0.12 });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeProgramModal();
+                closeApplyModal();
+                closeSearchModal();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            renderPrograms();
+            switchAdmissionTab('ug');
+            calculateAggregate();
+            selectCampus('h12');
+            filterNews('All');
+            document.querySelectorAll('.reveal-pop').forEach(el => revealObserver.observe(el));
+        });
+    </script>
+</body>
+</html>
